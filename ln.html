@@ -14,6 +14,7 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!--[if lt IE 9]>
             <p class="browsehappy">You are using an
                 <strong>outdated</strong>browser. Please
@@ -27,10 +28,48 @@
       lbhq('create', 'LB-5B4D1EC2-1');
       lbhq('_env', 'staging2');
   </script>
+    <script>
+        $(document).ready(function(){
+          $("button").click(function(){
+            $.post("demo_test_post.asp",
+                {
+                  author: "Eif0pJRn8T",
+                  city: "PUBLISHED",
+                "specificContent": {
+                "com.linkedin.ugc.ShareContent": {
+                    "shareCommentary": {
+                        "text": "Learning more about LinkedIn by reading the LinkedIn Blog!"
+                    },
+                    "shareMediaCategory": "ARTICLE",
+                    "media": [
+                        {
+                            "status": "READY",
+                            "description": {
+                                "text": "Official LinkedIn Blog - Your source for insights and information about LinkedIn."
+                            },
+                            "originalUrl": "https://blog.linkedin.com/",
+                            "title": {
+                                "text": "Official LinkedIn Blog"
+                            }
+                        }
+                    ]
+                }
+            },
+            "visibility": {
+                "com.linkedin.ugc.MemberNetworkVisibility": "CONNECTIONS"
+            }
+                },
+                function(data,status){
+                  alert("Data: " + data + "\nStatus: " + status);
+            });
+          });
+        });
+</script>
 </head>
 
 <body style="background-color: darkcyan;">
 <h4> LinkedIn </h4>
+<button> Share on LinkedIn </button>
 </body>
 
 </html>
