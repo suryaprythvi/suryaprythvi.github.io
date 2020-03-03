@@ -31,39 +31,42 @@
     <script>
         $(document).ready(function(){
           $("button").click(function(){
-            $.post("POST https://api.linkedin.com/v2/ugcPosts",
-                {
-                  author: "Eif0pJRn8T",
-                  city: "PUBLISHED",
-                "specificContent": {
-                "com.linkedin.ugc.ShareContent": {
-                    "shareCommentary": {
-                        "text": "Learning more about LinkedIn by reading the LinkedIn Blog!"
-                    },
-                    "shareMediaCategory": "ARTICLE",
-                    "media": [
-                        {
-                            "status": "READY",
-                            "description": {
-                                "text": "Official LinkedIn Blog - Your source for insights and information about LinkedIn."
-                            },
-                            "originalUrl": "https://blog.linkedin.com/",
-                            "title": {
-                                "text": "Official LinkedIn Blog"
-                            }
+              $.ajax({
+                url: "https://api.linkedin.com/v2/ugcPosts",
+                type: "POST",
+                data: {
+                        author: "Eif0pJRn8T",
+                        city: "PUBLISHED",
+                        "specificContent": {
+                            "com.linkedin.ugc.ShareContent": {
+                                "shareCommentary": {
+                                    "text": "Learning more about LinkedIn by reading the LinkedIn Blog!"
+                                },
+                            "shareMediaCategory": "ARTICLE",
+                            "media": [
+                                {
+                                    "status": "READY",
+                                    "description": {
+                                        "text": "Official LinkedIn Blog - Your source for insights and information about LinkedIn."
+                                    },
+                                    "originalUrl": "https://blog.linkedin.com/",
+                                    "title": {
+                                        "text": "Official LinkedIn Blog"
+                                    }
+                                }
+                            ]
                         }
-                    ]
-                }
-            },
-            "visibility": {
-                "com.linkedin.ugc.MemberNetworkVisibility": "CONNECTIONS"
-            }
+                    },
+                    "visibility": {
+                        "com.linkedin.ugc.MemberNetworkVisibility": "CONNECTIONS"
+                    }
                 },
-                function(data,status){
-                  alert("Data: " + data + "\nStatus: " + status);
+                contentType: "application/json",
+                success: function (data) {
+                    console.log(data);
+                }
             });
-          });
-        });
+            
 </script>
 </head>
 
