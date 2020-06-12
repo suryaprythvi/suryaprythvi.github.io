@@ -30,6 +30,7 @@
   </script> -->
     <script type="text/javascript">
       if (document.readyState === 'interactive' || document.readyState === 'complete') {
+        console.log("interactive");
         (function(j,u,k,e,b,o,x){j[b]=j[b]||function(){
         (j[b].q=j[b].q||[]).push(arguments)},j[b].l=1*new Date();o=u.createElement(k),
         x=u.getElementsByTagName(k)[0];o.async=1;o.src=e;x.parentNode.insertBefore(o,x)
@@ -37,6 +38,7 @@
           lbhq('create', 'LB-96489541-1');
           lbhq('_env', 'development');
       } else {
+        console.log("else content loaded listener");
         document.addEventListener('DOMContentLoaded', (function(j,u,k,e,b,o,x){j[b]=j[b]||function(){
         (j[b].q=j[b].q||[]).push(arguments)},j[b].l=1*new Date();o=u.createElement(k),
         x=u.getElementsByTagName(k)[0];o.async=1;o.src=e;x.parentNode.insertBefore(o,x)
