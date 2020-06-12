@@ -29,23 +29,19 @@
       lbhq('_env', 'development');
   </script> -->
     <script type="text/javascript">
-      if (document.readyState === 'interactive' || document.readyState === 'complete') {
-        console.log("interactive");
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+      console.log("interactive and complete");
+    } else {
+      console.log("not complete");
+      document.addEventListener("DOMContentLoaded", function() {
         (function(j,u,k,e,b,o,x){j[b]=j[b]||function(){
         (j[b].q=j[b].q||[]).push(arguments)},j[b].l=1*new Date();o=u.createElement(k),
         x=u.getElementsByTagName(k)[0];o.async=1;o.src=e;x.parentNode.insertBefore(o,x)
         })(window,document,'script','https://app.cdn.lookbookhq.com/production/jukebox/current/jukebox.js','lbhq');
           lbhq('create', 'LB-96489541-1');
           lbhq('_env', 'development');
-      } else {
-        console.log("else content loaded listener");
-        document.addEventListener('DOMContentLoaded', (function(j,u,k,e,b,o,x){j[b]=j[b]||function(){
-        (j[b].q=j[b].q||[]).push(arguments)},j[b].l=1*new Date();o=u.createElement(k),
-        x=u.getElementsByTagName(k)[0];o.async=1;o.src=e;x.parentNode.insertBefore(o,x)
-        })(window,document,'script','https://app.cdn.lookbookhq.com/production/jukebox/current/jukebox.js','lbhq');
-          lbhq('create', 'LB-96489541-1');
-          lbhq('_env', 'development');, true);
-      }
+      });
+    }
     </script>
 </head>
 
