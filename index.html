@@ -31,20 +31,14 @@
       lbhq('_env', 'development');
   </script> -->
     <script type="text/javascript">
-    if (document.readyState === "complete" || document.readyState === "interactive") {
-      console.log("interactive and complete");
-    } else {
-      console.log("not complete");
-      document.addEventListener("DOMContentLoaded", function() {
-        (function(j,u,k,e,b,o,x){j[b]=j[b]||function(){
-        (j[b].q=j[b].q||[]).push(arguments)},j[b].l=1*new Date();o=u.createElement(k),
-        x=u.getElementsByTagName(k)[0];o.async=1;o.src=e;x.parentNode.insertBefore(o,x)
-        })(window,document,'script','http://default.buzzdata.local:8080/jukebox.js','lbhq');
-          lbhq('create', 'LB-96489541-1');
-          lbhq('_env', 'development');
-      });
-    }
+    (function(j,u,k,e,b,o,x){j[b]=j[b]||function(){
+    (j[b].q=j[b].q||[]).push(arguments)},j[b].l=1*new Date();o=u.createElement(k),
+    x=u.getElementsByTagName(k)[0];o.async=1;o.src=e;x.parentNode.insertBefore(o,x)
+    })(window,document,'script','http://default.buzzdata.local:8080/jukebox.js','lbhq');
+      lbhq('create', 'LB-96489541-1');
+      lbhq('_env', 'development');
     </script>
+    pfjukebox("5c9ba79a-7b77-422e-b6df-7903b2970c58", "trending_by_account").then(r => console.log(r));
 </head>
 
 <body style="background-color: darkcyan;">
