@@ -30,15 +30,47 @@
       lbhq('create', 'LB-96489541-1');
       lbhq('_env', 'development');
   </script> -->
-    <script type="text/javascript">
+<!--     <script type="text/javascript">
     (function(j,u,k,e,b,o,x){j[b]=j[b]||function(){
     (j[b].q=j[b].q||[]).push(arguments)},j[b].l=1*new Date();o=u.createElement(k),
     x=u.getElementsByTagName(k)[0];o.async=1;o.src=e;x.parentNode.insertBefore(o,x)
     })(window,document,'script','http://default.buzzdata.local:8080/jukebox.js','lbhq');
       lbhq('create', 'LB-96489541-1');
       lbhq('_env', 'development');
+    </script> -->
+
+    <script type="text/javascript">
+        (async () => {
+          await loadScript(
+            window,
+            document,
+            "script",
+            "https://app.cdn.lookbookhq.com/production/jukebox/current/jukebox.js",
+            "lbhq"
+          );
+        })();
+
+        function loadScript(j, u, k, e, b, o, x) {
+          return new Promise(function (resolve, reject) {
+            if (!document.querySelectorAll(`script[src="${e}"]`).length > 0) {
+              (j[b] = j[b] ||
+                function () {
+                    (j[b].q = j[b].q || []).push(arguments);
+                }),
+                (j[b].l = 1 * new Date());
+              (o = u.createElement(k)), (x = u.getElementsByTagName(k)[0]);
+              o.async = 1;
+              o.src = e;
+              x.parentNode.insertBefore(o, x);
+              k.onload = function () {
+                resolve();
+              };
+            } else {
+              resolve();
+            }
+        }
     </script>
-<!--     pfjukebox("5c9ba79a-7b77-422e-b6df-7903b2970c58", "trending_by_account").then(r => console.log(r)); -->
+    
 </head>
 
 <body style="background-color: darkcyan;">
@@ -130,15 +162,6 @@
     </p>
 </body>
 <script type="text/javascript">
-    function waitForElement(){
-        if(typeof pfjukebox !== "undefined"){
-            pfjukebox({ uuid: "5c9ba79a-7b77-422e-b6df-7903b2970c58", recommendationType: "trending_by_account"}).then(r => console.log(r));
-        }
-        else{
-            console.log(1);
-            setTimeout(waitForElement, 250);
-        }
-    }
-    waitForElement();
+    console.log(window.lbhq);
 </script>
 </html>
