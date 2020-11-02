@@ -39,37 +39,37 @@
       lbhq('_env', 'development');
     </script> -->
 
-    <script type="text/javascript">
+    <script type="text/javascript"> 
         (async () => {
           await loadScript(
             window,
             document,
             "script",
             "https://app.cdn.lookbookhq.com/production/jukebox/current/jukebox.js",
-            "lbhq"
+            lbhq
           );
         })();
 
         function loadScript(j, u, k, e, b, o, x) {
           return new Promise(function (resolve, reject) {
             if (!document.querySelectorAll(`script[src="${e}"]`).length > 0) {
-                  (j[b] = j[b] ||
-                    function () {
-                        (j[b].q = j[b].q || []).push(arguments);
-                    }),
-                    (j[b].l = 1 * new Date());
-                  (o = u.createElement(k)), (x = u.getElementsByTagName(k)[0]);
-                  o.async = 1;
-                  o.src = e;
-                  x.parentNode.insertBefore(o, x);
-                  k.onload = function () {
-                    resolve();
-                  };
-                } else {
+              j[b] = j[b]||function() {
+                    (j[b].q=j[b].q||[]).push(arguments)
+                },
+                j[b].l = 1*new Date();
+                o = u.createElement(k), // create script element
+                x = u.getElementsByTagName(k)[0];
+                o.async=1;
+                o.src=e;
+                o.onload = function() {
                   resolve();
                 }
+                x.parentNode.insertBefore(o,x)
+            } else {
+              resolve();
             }
-         }
+          }
+        }
     </script>
     
 </head>
