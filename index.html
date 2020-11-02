@@ -48,8 +48,6 @@
             "https://app.cdn.lookbookhq.com/production/jukebox/current/jukebox.js",
             "lbhq"
           );
-          lbhq('create', 'LB-96489541-1');
-          lbhq('_env', 'development');
         })();
 
         function loadScript(j, u, k, e, b, o, x) {
@@ -65,6 +63,8 @@
                 o.src=e;
                 o.onload = function() {
                     console.log("sdddds");
+                    lbhq('create', 'LB-96489541-1');
+                    lbhq('_env', 'development');
                     resolve();
                 };
                 o.onerror = function () {
