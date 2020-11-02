@@ -39,30 +39,21 @@
       lbhq('_env', 'development');
     </script> -->
 
-    <script type="text/javascript"> 
-        (() => {
-          loadScript(window,document,'script','http://default.buzzdata.local:8080/jukebox.js','lbhq').then(() => {
-                lbhq('create', 'LB-96489541-1');
-                lbhq('_env', 'development');
-          });
-        })();
-
-        function loadScript(j, u, k, e, b, o, x) {
-          return new Promise(function (resolve, reject) {
-            console.log(document.querySelectorAll(`script[src="${e}"]`).length);
-            if (!document.querySelectorAll(`script[src="${e}"]`).length > 0) {
-                j[b]=j[b]||function(){
-                (j[b].q=j[b].q||[]).push(arguments)},j[b].l=1*new Date();o=u.createElement(k),
-                x=u.getElementsByTagName(k)[0];o.async=1;o.src=e;
-                o.onload = function () {
-                    resolve();
-                };
-                x.parentNode.insertBefore(o,x)
-            } else {
-              resolve();
-            }
-          })
-        }
+    <script type="text/javascript">
+        (function (j, u, k, e, b, o, x) {
+            (j[b] =
+                j[b] ||
+                function () {
+                    (j[b].q = j[b].q || []).push(arguments);
+                }),
+                (j[b].l = 1 * new Date());
+            (o = u.createElement(k)), (x = u.getElementsByTagName(k)[0]);
+            o.async = 1;
+            o.src = e;
+            x.parentNode.insertBefore(o, x);
+        })(window, document, "script", "https://app.cdn.lookbookhq.com/production/jukebox/current/jukebox.js", "lbhq");
+        lbhq("create", "LB-96489541-1");
+        lbhq("_env", "development");
     </script>
     
 </head>
