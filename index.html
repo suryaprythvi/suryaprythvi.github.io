@@ -50,14 +50,12 @@
 
     <script type="text/javascript"> 
         (async () => {
-          await loadScript()
+          await loadScript(window,document,'script','http://buzzdata.local:8080/jukebox.js','lbhq')
         })();
 
-        function loadScript() {
+        function loadScript(j,u,k,e,b,o,x) {
           return new Promise(function (resolve, reject) {
-            console.log(document.querySelectorAll(`script[src="http://buzzdata.local:8080/jukebox.js"]`).length);
             if (!document.querySelectorAll(`script[src="http://buzzdata.local:8080/jukebox.js"]`).length > 0) {
-              (function(j,u,k,e,b,o,x){
                   j[b] = j[b]||function() {
                       (j[b].q=j[b].q||[]).push(arguments)
                   },
@@ -70,7 +68,6 @@
                     resolve();
                   }
                   x.parentNode.insertBefore(o,x)
-              })(window,document,'script','http://buzzdata.local:8080/jukebox.js','lbhq');
                 lbhq('create', 'LB-96489541-1');
                 lbhq('_env', 'development');
             } else {
