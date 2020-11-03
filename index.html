@@ -55,8 +55,8 @@
 
         function loadScript() {
           return new Promise(function (resolve, reject) {
-            console.log(document.querySelectorAll(`script[src="${e}"]`).length);
-            if (!document.querySelectorAll(`script[src="${e}"]`).length > 0) {
+            console.log(document.querySelectorAll(`script[src="http://buzzdata.local:8080/jukebox.js"]`).length);
+            if (!document.querySelectorAll(`script[src="http://buzzdata.local:8080/jukebox.js"]`).length > 0) {
               (function(j,u,k,e,b,o,x){
                   j[b] = j[b]||function() {
                       (j[b].q=j[b].q||[]).push(arguments)
