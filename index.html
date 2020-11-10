@@ -25,6 +25,8 @@
     <script type="text/javascript"> 
         (async () => {
             await loadScript(window,document,'script','http://buzzdata.local:8080/jukebox.js','lbhq')
+            lbhq('create', 'LB-96489541-1');
+            lbhq('_env', 'development');
         })();
 
         function loadScript(j,u,k,e,b,o,x) {
@@ -42,8 +44,6 @@
                     resolve();
                   }
                   x.parentNode.insertBefore(o,x)
-                  lbhq('create', 'LB-96489541-1');
-                  lbhq('_env', 'development');
             } else {
               resolve();
             }
