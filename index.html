@@ -25,7 +25,8 @@
     <script type="text/javascript"> 
         (async () => {
             await loadScript(window,document,'script','http://buzzdata.local:8080/jukebox.js','lbhq')
-            console.log(window.lbhq.q)
+            const obj = window.pfjukebox();
+            obj.initLbhq();
         })();
 
         function loadScript(j,u,k,e,b,o,x) {
@@ -45,8 +46,6 @@
                   x.parentNode.insertBefore(o,x)
                   lbhq('create', 'LB-96489541-1');
                   lbhq('_env', 'development');
-//                     const obj = pfjukebox();
-//                     obj.initLbhq();
             } else {
               resolve();
             }
