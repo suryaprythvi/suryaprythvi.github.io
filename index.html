@@ -26,8 +26,7 @@
         (async () => {
             await loadScript(window,document,'script','http://buzzdata.local:8080/jukebox.js','lbhq')
             console.log(window.pfjukebox);
-            const obj = new window.pfjukebox();
-            obj.initLbhq();
+            pfjukebox.initLbhq();
         })();
 
         function loadScript(j,u,k,e,b,o,x) {
