@@ -56,7 +56,6 @@
      function loadJukeboxScript() {
        return new Promise(function (resolve, reject) {
          (function(j,u,k,e,b,o,x){
-           console.log(window.pfJukeboxScriptLoaded);
            if (window.pfJukeboxScriptLoaded) {
               resolve();
            } else {
@@ -69,10 +68,10 @@
              o.async=1;
              o.src=e;
              o.onload = function() {
-               if(pfjukebox) {
+             if(pfjukebox) {
                 pfjukebox.initPfJukebox({ clientId: 'LB-96489541-1' });
-               }
-               window.pfJukeboxScriptLoaded = true;
+             }
+             window.pfJukeboxScriptLoaded = true;
                resolve();
              }
              x.parentNode.insertBefore(o,x)
@@ -175,6 +174,12 @@
 
       As a whole,age of the Canada Act, bringing the Constitution of Canada fully under Canadian control, referred only to Canada, and later that year the name of the national holiday was changed from Dominion Day to Canada Day.[19] The term Dominion was used to distinguish the federal government from the provinces, though after the Second World War the term federal had replaced dominion.[20]
     </p>
-
+    <script>
+    (async () => {
+        await loadScript(window,document,'script','http://buzzdata.local:8080/jukebox.js','lbhq')
+        pfjukebox.initPfJukebox({ clientId: 'LB-96489541-1' });
+        pfjukebox.fetchRecommendations("uuid here", "recom type here");
+    })();
+    </script>
 </body>
 </html>
