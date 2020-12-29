@@ -56,7 +56,10 @@
      function loadJukeboxScript(j,u,k,e,b,o,x) {
        return new Promise(function (resolve, reject) {
          (function(j,u,k,e,b,o,x){
-           if (!document.querySelectorAll(`script[src="${e}"]`).length > 0) {
+           console.log(document.querySelectorAll(`script[src="${e}"]`).length);
+           if (document.querySelectorAll(`script[src="${e}"]`).length > 0) {
+              resolve();
+           } else {
              j[b] = j[b]||function() {
                (j[b].q=j[b].q||[]).push(arguments)
              },
@@ -74,8 +77,6 @@
              x.parentNode.insertBefore(o,x)
              lbhq('create', 'LB-96489541-1');
              lbhq('_env', 'development');
-           } else {
-             resolve();
            }
          })(window,document,'script','http://buzzdata.local:8080/jukebox.js','lbhq')
        })
