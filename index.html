@@ -176,8 +176,8 @@
     </p>
     <script>
     (async () => {
-        await loadScript(window,document,'script','http://buzzdata.local:8080/jukebox.js','lbhq')
-        pfjukebox.initPfJukebox({ clientId: 'LB-96489541-1' });
+        await loadJukeboxScript()
+//         pfjukebox.initPfJukebox({ clientId: 'LB-96489541-1' });
         pfjukebox.fetchRecommendations("uuid here", "recom type here");
     })();
     </script>
