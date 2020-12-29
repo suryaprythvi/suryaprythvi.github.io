@@ -22,7 +22,7 @@
                 <strong>outdated</strong>browser. Please
                 <a href="http://browsehappy.com/">upgrade your browser</a>to improve your experience.</p>
         <![endif]-->
-    <script type="text/javascript"> 
+<!--     <script type="text/javascript"> 
         function loadScript(j,u,k,e,b,o,x) {
           return new Promise(function (resolve, reject) {
             if (!document.querySelectorAll(`script[src="${e}"]`).length > 0) {
@@ -51,6 +51,41 @@
             pfjukebox.initPfJukebox({ clientId: 'LB-96489541-1' });
             pfjukebox.fetchRecommendations("uuid here", "recom type here");
         })();
+    </script> -->
+    <script>
+     function loadJukeboxScript(j,u,k,e,b,o,x) {
+       return new Promise(function (resolve, reject) {
+         (function(j,u,k,e,b,o,x){
+           if (!document.querySelectorAll(`script[src="${e}"]`).length > 0) {
+             j[b] = j[b]||function() {
+               (j[b].q=j[b].q||[]).push(arguments)
+             },
+               j[b].l = 1*new Date();
+             o = u.createElement(k), // create script element
+               x = u.getElementsByTagName(k)[0];
+             o.async=1;
+             o.src=e;
+             o.onload = function() {
+               if(pfjukebox) {
+                pfjukebox.initPfJukebox({ clientId: 'LB-96489541-1' });
+               }
+               resolve();
+             }
+             x.parentNode.insertBefore(o,x)
+             lbhq('create', 'LB-96489541-1');
+             lbhq('_env', 'development');
+           } else {
+             resolve();
+           }
+         })(window,document,'script','http://buzzdata.local:8080/jukebox.js','lbhq')
+       })
+     }
+     loadJukeboxScript();
+
+      (async () => {
+        await loadJukeboxScript()
+        pfjukebox.fetchRecommendations("uuid here", "recom type here");
+      })();
     </script>
 </head>
 
