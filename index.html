@@ -57,7 +57,7 @@
        return new Promise(function (resolve, reject) {
          (function(j,u,k,e,b,o,x){
            console.log(window.pfJukeboxScriptLoaded);
-           if (!window.pfJukeboxScriptLoaded) {
+           if (window.pfJukeboxScriptLoaded) {
               resolve();
            } else {
              j[b] = j[b]||function() {
