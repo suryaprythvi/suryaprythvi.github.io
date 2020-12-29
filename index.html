@@ -56,8 +56,8 @@
      function loadJukeboxScript(j,u,k,e,b,o,x) {
        return new Promise(function (resolve, reject) {
          (function(j,u,k,e,b,o,x){
-           console.log(pfJukeboxScriptLoaded);
-           if (!pfJukeboxScriptLoaded) {
+           console.log(window.pfJukeboxScriptLoaded);
+           if (!window.pfJukeboxScriptLoaded) {
               resolve();
            } else {
              j[b] = j[b]||function() {
