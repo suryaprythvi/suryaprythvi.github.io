@@ -56,8 +56,8 @@
      function loadJukeboxScript(j,u,k,e,b,o,x) {
        return new Promise(function (resolve, reject) {
          (function(j,u,k,e,b,o,x){
-           console.log(document.querySelectorAll(`script[src="${e}"]`).length);
-           if (document.querySelectorAll(`script[src="${e}"]`).length > 0) {
+           console.log(pfJukeboxScriptLoaded);
+           if (!pfJukeboxScriptLoaded) {
               resolve();
            } else {
              j[b] = j[b]||function() {
@@ -72,6 +72,7 @@
                if(pfjukebox) {
                 pfjukebox.initPfJukebox({ clientId: 'LB-96489541-1' });
                }
+               window.pfJukeboxScriptLoaded = true;
                resolve();
              }
              x.parentNode.insertBefore(o,x)
