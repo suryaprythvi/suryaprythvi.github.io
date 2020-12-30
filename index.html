@@ -34,7 +34,7 @@
         function loadScript() {
           return new Promise(function (resolve, reject) {
               (function(j,u,k,e,b,o,x) {
-                  if (!document.querySelectorAll(`script[src="${e}"]`).length > 0) {
+                  if (!window.pfJukeboxScriptLoaded) {
                       j[b] = j[b]||function() {
                           (j[b].q=j[b].q||[]).push(arguments)
                       },
@@ -44,6 +44,7 @@
                       o.async=1;
                       o.src=e;
                       o.onload = function() {
+                        window.pfJukeboxScriptLoaded = true;
                         pfjukebox.initPfJukebox({ clientId: 'LB-96489541-1' });
                         resolve();
                       }
