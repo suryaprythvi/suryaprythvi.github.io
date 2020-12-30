@@ -58,10 +58,9 @@
           })
         }
         
-        (async () => {
-            await loadScript();
-//             pfjukebox.fetchRecommendations("uuid here", "recom type here");
-        })();
+//         (async () => {
+//             await loadScript();
+//         })();
     </script>
 <!--     <script>
      function loadJukeboxScript() {
@@ -186,13 +185,13 @@
       As a whole,age of the Canada Act, bringing the Constitution of Canada fully under Canadian control, referred only to Canada, and later that year the name of the national holiday was changed from Dominion Day to Canada Day.[19] The term Dominion was used to distinguish the federal government from the provinces, though after the Second World War the term federal had replaced dominion.[20]
     </p>
     <script>
-//         if(window.pfJukeboxScriptLoaded) {
-//             pfjukebox.fetchRecommendations("1234", "trending");
-//         } else {
-//             loadScript().then(() => {
-//                 pfjukebox.fetchRecommendations("1234", "trending");
-//             });
-//         }
+        if(window.pfJukeboxScriptLoaded) {
+            pfjukebox.fetchRecommendations("1234", "trending");
+        } else {
+            loadScript().then(() => {
+                pfjukebox.fetchRecommendations("1234", "trending");
+            });
+        }
     </script>
 </body>
 </html>
