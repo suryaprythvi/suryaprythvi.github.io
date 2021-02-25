@@ -16,91 +16,15 @@
             max-width: 100%;
         }
     </style>
-    <!-- Latest compiled and minified CSS -->
-<!--     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-
-    <!-- Optional theme -->
-<!--     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> -->
-    
-<!--     <link rel="stylesheet" href="http://pathfactory-tracking-test2.com/wp-content/themes/pathfactory/dist/application-38f3a1e79d.css"> -->
-    <!--[if lt IE 9]>
-            <p class="browsehappy">You are using an
-                <strong>outdated</strong>browser. Please
-                <a href="http://browsehappy.com/">upgrade your browser</a>to improve your experience.</p>
-        <![endif]-->
     <script type="text/javascript">
-        (function(j,u,k,e,b,o,x){j[b]=j[b]||function(){
+        (function(j,u,k,e,b,o,x){j["pfObject"]=b;j[b]=j[b]||function(){
         (j[b].q=j[b].q||[]).push(arguments)},j[b].l=1*new Date();o=u.createElement(k),
         x=u.getElementsByTagName(k)[0];o.async=1;o.src=e;x.parentNode.insertBefore(o,x)
-        })(window,document,'script','http://buzzdata.local:8080/jukebox.js','lbhq');
-          lbhq('create', 'LB-96489541-1');
-          lbhq('_env', 'development');
+        })(window,document,'script','http://buzzdata.local:8080/jukebox.js',"pf");
+          pf('create', 'LB-96489541-1');
+          pf('_env', 'development');
       </script>
-<!--     <script type="text/javascript"> 
-        function loadScript() {
-          return new Promise(function (resolve, reject) {
-              (function(j,u,k,e,b,o,x) {
-                  if (!window.pfJukeboxScriptLoaded) {
-                      j[b] = j[b]||function() {
-                          (j[b].q=j[b].q||[]).push(arguments)
-                      },
-                      j[b].l = 1*new Date();
-                      o = u.createElement(k), // create script element
-                      x = u.getElementsByTagName(k)[0];
-                      o.async=1;
-                      o.src=e;
-                      o.onload = function() {
-                        window.pfJukeboxScriptLoaded = true;
-                        pfjukebox.initPfJukebox({ clientId: 'LB-96489541-1' });
-                        resolve();
-                      }
-                      x.parentNode.insertBefore(o,x)
-                      lbhq('create', 'LB-96489541-1');
-                      lbhq('_env', 'development');
-                } else {
-                  resolve();
-                }
-              })(window,document,'script','http://buzzdata.local:8080/jukebox.js','lbhq')
-          })
-        }
-        
-         (async () => {
-             await loadScript();
-         })();
-      </script> -->
-<!--     <script>
-     function loadJukeboxScript() {
-       return new Promise(function (resolve, reject) {
-         (function(j,u,k,e,b,o,x){
-           if (window.pfJukeboxScriptLoaded) {
-              resolve();
-           } else {
-             j[b] = j[b]||function() {
-               (j[b].q=j[b].q||[]).push(arguments)
-             },
-               j[b].l = 1*new Date();
-             o = u.createElement(k), // create script element
-               x = u.getElementsByTagName(k)[0];
-             o.async=1;
-             o.src=e;
-             o.onload = function() {
-             if(pfjukebox) {
-                pfjukebox.initPfJukebox({ clientId: 'LB-96489541-1' });
-             }
-             window.pfJukeboxScriptLoaded = true;
-               resolve();
-             }
-             x.parentNode.insertBefore(o,x)
-             lbhq('create', 'LB-96489541-1');
-             lbhq('_env', 'development');
-           }
-         })(window,document,'script','http://buzzdata.local:8080/jukebox.js','lbhq')
-       })
-     }
-    (async () => {
-        await loadJukeboxScript()
-    })();
-    </script> -->
+    
 </head>
 
 <body style="background-color: darkcyan;">
@@ -117,14 +41,5 @@
         </p>
         <div class="container" id="new_wibsite_tools1"></div>
     </div>
-    <script>
-        if(window.pfJukeboxScriptLoaded) {
-            pfjukebox.fetchRecommendations("1234", "trending");
-        } else {
-            loadScript().then(() => {
-                pfjukebox.fetchRecommendations("1234", "trending");
-            });
-        }
-    </script>
 </body>
 </html>
