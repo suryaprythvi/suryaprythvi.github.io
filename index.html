@@ -185,6 +185,11 @@
   }
 })();
 </script>
+<script>
+    if(Osano) {
+        Osano.cm.addEventListener('osano-cm-consent-saved', (change) => console.log('Consent preference changed:', JSON.stringify(change)));
+    }
+</script>
 <!-- End Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->
 </head>
 
