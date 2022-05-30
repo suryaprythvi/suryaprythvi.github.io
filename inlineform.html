@@ -31,7 +31,7 @@
         <div class="container" id="new_wibsite_tools1"></div>
     </div>
     <form id="internal_form" style="background-color: grey" >
-	Email: <input type="text" name="email" />
+	Email: <input type="text" name="email" id="email" />
 	    <button type="submit">Submit form</button>
     </form>
 </body>
@@ -40,7 +40,7 @@
 	    form.addEventListener("submit", function(event) {
 		event.preventDefault();
 		setTimeout(function(){
-		  var email = $form.find("input[name='email']").val();
+		  var email = document.getElementById("email").value;
 		  console.log(email, "s")
 		  window.parent.postMessage({
 		    conversionUrl: document.location.href,
