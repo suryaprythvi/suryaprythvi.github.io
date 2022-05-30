@@ -30,15 +30,17 @@
         <div class="container" id="new_wibsite_tools2"></div>
         <div class="container" id="new_wibsite_tools1"></div>
     </div>
-    <form method="post" name="captureTagForm" id="internal_form" style="background-color: grey">
+    <form id="internal_form" style="background-color: grey" >
 	Email: <input type="text" name="email" />
+	    <button type="submit">Submit form</button>
     </form>
 </body>
 	<script type="text/javascript">
 	    var form = document.getElementById("internal_form");
 	    form.addEventListener("submit", function(event) {
+		event.preventDefault();
 		setTimeout(function(){
-		  var email = $form.find("input[name='emailAddress']").val();
+		  var email = $form.find("input[name='email']").val();
 		  console.log(email, "s")
 		  window.parent.postMessage({
 		    conversionUrl: document.location.href,
