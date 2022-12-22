@@ -17,13 +17,15 @@
         }
     </style>
     <script>
+        document.addEventListener("DOMContentLoaded",function(){window.addEventListener("message",function(e){var t=e.data.contentUrl;if(t){var n=document.getElementById("contentOverlay");n.setAttribute("data-lookbook-overlay-href",t),n.click()}},!1)});
+        
         const iframe = document.getElementById("microsite");
         if (iframe) {
             iframe.onLoad = function() {
                 iframe.setAttribute("domain", "suryaprythvi.github.io");
             }
         }
-    <script>
+    
         function getUrl(u) {
             if(t){
                   var n=document.getElementById("contentOverlay");
@@ -38,6 +40,7 @@
                     n.click()
               }
         };
+    </script>
     <script type="text/javascript">
         (function(j,u,k,e,b,o,x){j["pfObject"]=b;j[b]=j[b]||function(){
         (j[b].q=j[b].q||[]).push(arguments)},j[b].l=1*new Date();o=u.createElement(k),
