@@ -18,11 +18,18 @@
     </style>
     <script>
         document.addEventListener("DOMContentLoaded",function(){window.addEventListener("message",function(e){var t=e.data.contentUrl;if(t){var n=document.getElementById("contentOverlay");n.setAttribute("data-lookbook-overlay-href",t),n.click()}},!1)});
-        
+
+        if(window.frames['microsite']) {
+            window.frames['microsite'].contentWindow.postMessage({url: "https://suryaprythvi.github.io/" }, "*")
+            const myEvent = new Event('iframeCustomEvent', {
+              url: "https://suryaprythvi.github.io/"
+            });
+        }
         const iframe = document.getElementById("microsite");
         if (iframe) {
             iframe.onLoad = function() {
                 iframe.setAttribute("domain", "suryaprythvi.github.io");
+                window.frames['microsite'].contentWindow.postMessage({url: "github.io" }, "*")
             }
         }
     
