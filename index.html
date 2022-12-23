@@ -30,10 +30,10 @@
             if (iframe) {
                 iframe.addEventListener("load", function() {
                     console.log(window.frames['microsite']);
-                    window.frames['microsite'].contentWindow.postMessage({url: "https://suryaprythvi.github.io/" }, "*")
-                    const myEvent = new Event('iframeCustomEvent', {
-                      url: "https://suryaprythvi.github.io/"
-                    });
+                    window.frames['microsite'].contentWindow.postMessage({url: window.location.href.split('?')[0] }, "*")
+//                     const myEvent = new Event('iframeCustomEvent', {
+//                       url: "https://suryaprythvi.github.io/"
+//                     });
                 });
             }
         });
