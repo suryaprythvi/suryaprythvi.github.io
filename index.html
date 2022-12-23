@@ -20,22 +20,27 @@
         document.addEventListener("DOMContentLoaded",function(){window.addEventListener("message",function(e){var t=e.data.contentUrl;if(t){var n=document.getElementById("contentOverlay");n.setAttribute("data-lookbook-overlay-href",t),n.click()}},!1)});
 
         document.addEventListener('DOMContentLoaded', (event) => {
-            if(window.frames['microsite']) {
-                window.frames['microsite'].contentWindow.postMessage({url: "https://suryaprythvi.github.io/" }, "*")
-                const myEvent = new Event('iframeCustomEvent', {
-                  url: "https://suryaprythvi.github.io/"
-                });
+            const iframes = document.getElementsByClassName("pf_embeds");
+            for (let item of iframes) {
+                item.contentWindow.postMessage({url: window.location.href.split('?')[0] }, "*")
             }
-            const iframe = document.getElementById("microsite");
-            if (iframe) {
-                iframe.addEventListener("load", function() {
-                    console.log(window.frames['microsite']);
-                    window.frames['microsite'].contentWindow.postMessage({url: window.location.href.split('?')[0] }, "*")
+
+//             if(window.frames['microsite']) {
+//                 window.frames['microsite'].contentWindow.postMessage({url: "https://suryaprythvi.github.io/" }, "*")
+//                 const myEvent = new Event('iframeCustomEvent', {
+//                   url: "https://suryaprythvi.github.io/"
+//                 });
+//             }
+//             const iframe = document.getElementById("microsite");
+//             if (iframe) {
+//                 iframe.addEventListener("load", function() {
+//                     console.log(window.frames['microsite']);
+//                     window.frames['microsite'].contentWindow.postMessage({url: window.location.href.split('?')[0] }, "*")
 //                     const myEvent = new Event('iframeCustomEvent', {
 //                       url: "https://suryaprythvi.github.io/"
 //                     });
-                });
-            }
+//                 });
+//             }
         });
         
     
