@@ -22,7 +22,9 @@
         document.addEventListener('DOMContentLoaded', (event) => {
             const iframes = document.getElementsByClassName("pf_embeds");
             for (let item of iframes) {
-                item.contentWindow.postMessage({url: window.location.href.split('?')[0] }, "*")
+                item.onload = function() { 
+                    item.contentWindow.postMessage({url: window.location.href.split('?')[0] }, "*")
+                };
             }
 
 //             if(window.frames['microsite']) {
