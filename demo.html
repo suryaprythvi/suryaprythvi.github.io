@@ -29,6 +29,18 @@
           pf('create', 'LB-96489541-1');
           pf('_env', 'development');
       </script>
+    <script>
+        document.addEventListener("DOMContentLoaded",function(){window.addEventListener("message",function(e){var t=e.data.contentUrl;if(t){var n=document.getElementById("contentOverlay");n.setAttribute("data-lookbook-overlay-href",t),n.click()}},!1)});
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const iframes = document.getElementsByClassName("pf_embeds");
+            for (let item of iframes) {
+                item.onload = function() { 
+                    item.contentWindow.postMessage({url: window.location.href.split('?')[0] }, "*")
+                };
+            }
+        });
+    </script>
 </head>
 
 <body style="background-color: darkcyan;">
@@ -43,6 +55,8 @@
 As a whole,age of the Canada Act, bringing the Constitution of Canada fully under Canadian control, referred only to Canada, and later that year the name of the national holiday was changed from Dominion Day to Canada Day.[19] The term Dominion was used to distinguish the federal government from the provinces, though after the Second World War the term federal had replaced dominion.[20]
 
 </p>
+   <iframe id="microsite1" class="pf_embeds" src="http://buzzdata.buzzdata.local:4000/prod-and-sol-microsi?lb-mode=preview" width="100%" height="380" scrolling="no" frameborder="0">
+   <a href="#" id="contentOverlay" data-lookbook-overlay-href="" data-lookbook-overlay-width="80%" data-lookbook-overlay-height="80%" style="display:none">
 </body>
 
 </html>
