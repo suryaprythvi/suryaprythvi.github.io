@@ -61,6 +61,28 @@
               }
         };
     </script>
+    
+    <script>
+        const pfobserver = new MutationObserver((mutations, obs) => {
+        const pfConciergeGroup = document.querySelector('.pf-carousel-item-group');
+          if (pfConciergeGroup) {
+            alert("hello");
+            document.querySelectorAll('.pf-carousel-item-link').forEach(function(a){
+            var t = a.querySelector('.pf-carousel-item-title').innerText
+            a.setAttribute('data-config-metrics-title', t);
+            a.setAttribute('data-config-metrics-group', 'PathFactory-POC');
+            a.setAttribute('data-config-metrics-item', 'PathFactory-POC-Link-'+a.parentElement.getAttribute('data-gslide'));
+        })
+            obs.disconnect();
+            return;
+          }
+        });
+        pfobserver.observe(document, {
+          childList: true,
+          subtree: true
+        });
+    </script>
+    
 <!--     <script type="text/javascript">
         (function(j,u,k,e,b,o,x){j["pfObject"]=b;j[b]=j[b]||function(){
         (j[b].q=j[b].q||[]).push(arguments)},j[b].l=1*new Date();o=u.createElement(k),
