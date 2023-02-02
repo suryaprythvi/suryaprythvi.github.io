@@ -24,10 +24,10 @@
             console.log("surya 1", iframes)
             for (let item of iframes) {
                 console.log("surya 2", item)
-                item.onloaded = function() {
-                    console.log("surya 5 iframe body loaded and post message");
+                item.addEventListener("load", function() {
+                    console.log("surya 5 loading Finish");
                     item.contentWindow.postMessage({url: window.location.href.split('?')[0] }, "*")
-                }
+                });
                 item.onload = function() {                     
                     console.log("surya 3 loaded");
                     setTimeout(() => {
@@ -35,9 +35,6 @@
                         item.contentWindow.postMessage({url: window.location.href.split('?')[0] }, "*")
                     }, 1000);
                 };
-                item.addEventListener("load", function() {
-                    console.log("surya loading Finish");
-                });
             }
 
 //             if(window.frames['microsite']) {
