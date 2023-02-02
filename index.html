@@ -17,9 +17,6 @@
         }
     </style>
     <script>
-        function frameload() {
-            console.log("surya 6 inline loaded");
-        }
         document.addEventListener("DOMContentLoaded",function(){window.addEventListener("message",function(e){var t=e.data.contentUrl;if(t){var n=document.getElementById("contentOverlay");n.setAttribute("data-lookbook-overlay-href",t),n.click()}},!1)});
 
         document.addEventListener('DOMContentLoaded', (event) => {
@@ -27,15 +24,9 @@
             console.log("surya 1", iframes)
             for (let item of iframes) {
                 console.log("surya 2", item)
-                let c = 0;
-                const myInterval = setInterval(function () {
-                    c++;
-                    if (c === 5) {
-                        clearInterval(myInterval)
-                    }
-                    console.log("surya final 0", item.width);
-                    console.log("surya final 01", item.offsetWidth);
-                }, 1000);
+                $('item').ready(function(){
+                    console.log("surya 6 iframe ready")
+                });
                 item.onload = function() {                     
                     console.log("surya 3 loaded");
                     setTimeout(() => {
@@ -152,7 +143,7 @@ document.addEventListener("DOMContentLoaded",function(){
        <input type="text" name="email" />
     </form>
     <a href="#" id="contentOverlay" data-lookbook-overlay-href="" data-lookbook-overlay-width="80%" data-lookbook-overlay-height="80%" style="display:none"></a>
-    <iframe class="pf_embeds" onload="frameload()"  src="https://resources.nvidia.com/en-us-financial-service?lb-mode=preview" width="100%" height="380" scrolling="no" frameborder="0"></iframe>
+    <iframe class="pf_embeds" src="https://resources.nvidia.com/en-us-financial-service?lb-mode=preview" width="100%" height="380" scrolling="no" frameborder="0"></iframe>
 <!--     <iframe id="microsite1" class="pf_embeds" src="https://default.pathfactory-development.com/overlay?lb-mode=preview" width="100%" height="380" scrolling="no" frameborder="0">
     </iframe> -->
 <!--     <iframe id="microsite1" class="pf_embeds" src="http://buzzdata.buzzdata.local:4000/prod-and-sol-microsi?lb-mode=preview" width="100%" height="380" scrolling="no" frameborder="0">
