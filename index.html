@@ -26,12 +26,12 @@
                 console.log("surya 2", item)
                 let c = 0;
                 const myInterval = setInterval(function () {
+                    c++;
                     if (c === 5) {
                         clearInterval(myInterval)
                     }
                     console.log("surya final 1", item.contentDocument);
                     console.log("surya final 2", item.contentWindow.document);
-                    c++;
                 }, 1000);
                 item.onload = function() {                     
                     console.log("surya 3 loaded");
