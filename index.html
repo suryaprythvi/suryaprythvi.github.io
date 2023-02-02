@@ -25,7 +25,7 @@
                 item.onload = function() { 
                     setTimeout(() => {
                         item.contentWindow.postMessage({url: window.location.href.split('?')[0] }, "*")
-                    }, 500);
+                    }, 1000);
                 };
             }
 
