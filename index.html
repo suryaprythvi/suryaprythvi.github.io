@@ -24,10 +24,10 @@
             console.log("surya 1", iframes)
             for (let item of iframes) {
                 console.log("surya 2", item)
-                item.document.body.onload = function() {
+                item.onloaded = function() {
                     console.log("surya 5 iframe body loaded");
                 }
-                item.onload = function() { 
+                item.onload = function() {                     
                     console.log("surya 3 loaded");
                     setTimeout(() => {
                         console.log("surya 4 post message");
