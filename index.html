@@ -34,6 +34,9 @@
                         item.contentWindow.postMessage({url: window.location.href.split('?')[0] }, "*")
                     }, 1000);
                 };
+                item.addEventListener("load", function() {
+                    console.log("surya loading Finish");
+                });
             }
 
 //             if(window.frames['microsite']) {
