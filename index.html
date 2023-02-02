@@ -22,12 +22,17 @@
         document.addEventListener('DOMContentLoaded', (event) => {
             const iframes = document.getElementsByClassName("pf_embeds");
             for (let item of iframes) {
-                item.onclick = function() {
-                    item.contentWindow.postMessage({url: window.location.href.split('?')[0] }, "*")
-                }
+                let i = 0;
+                const myInterval = setInterval(() => {
+                    if (i === 10) {
+                        clearInterval(myInterval);
+                    }
+                    item.contentWindow.postMessage({url: window.location.href.split('?')[0] }, "*");
+                }, 1000);
+
                 item.onload = function() {                     
                     console.log("surya 3 loaded");
-                    item.contentWindow.postMessage({url: window.location.href.split('?')[0] }, "*")
+                    item.contentWindow.postMessage({url: window.location.href.split('?')[0] }, "*");
                 };
             }
 
