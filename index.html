@@ -21,17 +21,17 @@
 
         document.addEventListener('DOMContentLoaded', (event) => {
             const iframes = document.getElementsByClassName("pf_embeds");
-            console.log("surya 1", iframes)
             for (let item of iframes) {
-                console.log("surya 2", item)
-                $(item).ready(function(){
-                    console.log("surya 6 iframe ready")
-                });
                 item.onload = function() {                     
                     console.log("surya 3 loaded");
-                    setTimeout(() => {
-                        console.log("surya 4 post message");
-                        item.contentWindow.postMessage({url: window.location.href.split('?')[0] }, "*")
+                    let i = 10;
+                    const int = setInterval(function () {
+                        if (i === 15) {
+                            clearInterval(int);
+                        }
+                        const x = item.contentWindow.postMessage({url: window.location.href.split('?')[0] }, "*")
+                        console.log("surya result " + i, x);
+                        i++;
                     }, 1000);
                 };
             }
