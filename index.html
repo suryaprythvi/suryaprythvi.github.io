@@ -23,15 +23,16 @@
             const iframes = document.getElementsByClassName("pf_embeds");
             for (let item of iframes) {
                 let i = 0;
+                let isIframeLoaded = false;
                 const myInterval = setInterval(() => {
-                    if (i === 10) {
+                    if (i === 15 || isIframeLoaded) {
                         clearInterval(myInterval);
                     }
                     item.contentWindow.postMessage({url: window.location.href.split('?')[0] }, "*");
-                }, 1000);
+                }, 500);
 
-                item.onload = function() {                     
-                    console.log("surya 3 loaded");
+                item.onload = function()
+                    isIframeLoaded = true;
                     item.contentWindow.postMessage({url: window.location.href.split('?')[0] }, "*");
                 };
             }
