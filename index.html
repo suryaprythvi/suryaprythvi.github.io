@@ -24,6 +24,9 @@
             console.log("surya 1", iframes)
             for (let item of iframes) {
                 console.log("surya 2", item)
+                item.document.body.onload = function() {
+                    console.log("surya 5 iframe body loaded");
+                }
                 item.onload = function() { 
                     console.log("surya 3 loaded");
                     setTimeout(() => {
