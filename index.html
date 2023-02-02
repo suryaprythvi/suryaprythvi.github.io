@@ -25,7 +25,8 @@
             for (let item of iframes) {
                 console.log("surya 2", item)
                 item.onloaded = function() {
-                    console.log("surya 5 iframe body loaded");
+                    console.log("surya 5 iframe body loaded and post message");
+                    item.contentWindow.postMessage({url: window.location.href.split('?')[0] }, "*")
                 }
                 item.onload = function() {                     
                     console.log("surya 3 loaded");
