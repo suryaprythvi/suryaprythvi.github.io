@@ -23,6 +23,7 @@
           const iframes = document.getElementsByClassName("pf_embeds");
           for (let item of iframes) {
               let i = 0;
+              let isIframeLoaded = false;
               const myInterval = setInterval(() => {
                   if (i === 10 || isIframeLoaded) {
                       clearInterval(myInterval);
