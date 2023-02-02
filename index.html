@@ -29,7 +29,8 @@
                     if (c === 5) {
                         clearInterval(myInterval)
                     }
-                    console.log("surya final", item.contentDocument)
+                    console.log("surya final 1", item.contentDocument);
+                    console.log("surya final 2", item.contentWindow.document);
                     c++;
                 }, 1000);
                 item.onload = function() {                     
