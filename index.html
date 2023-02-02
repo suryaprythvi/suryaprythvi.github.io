@@ -21,9 +21,13 @@
 
         document.addEventListener('DOMContentLoaded', (event) => {
             const iframes = document.getElementsByClassName("pf_embeds");
+            console.log("surya 1", iframes)
             for (let item of iframes) {
+                console.log("surya 2", item)
                 item.onload = function() { 
+                    console.log("surya 3 loaded");
                     setTimeout(() => {
+                        console.log("surya 4 post message");
                         item.contentWindow.postMessage({url: window.location.href.split('?')[0] }, "*")
                     }, 1000);
                 };
