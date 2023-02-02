@@ -17,7 +17,7 @@
         }
     </style>
     <script>
-        frameload() {
+        function frameload() {
             console.log("surya 6 inline loaded");
         }
         document.addEventListener("DOMContentLoaded",function(){window.addEventListener("message",function(e){var t=e.data.contentUrl;if(t){var n=document.getElementById("contentOverlay");n.setAttribute("data-lookbook-overlay-href",t),n.click()}},!1)});
