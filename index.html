@@ -38,7 +38,7 @@
                   if (i === 10 || isIframeLoaded) {
                       clearInterval(myInterval);
                   }
-                  item.contentWindow.postMessage({urls: "test" }, "*");
+                  item.contentWindow.postMessage({url: "test" }, "*");
               }, 500);
 
               item.onload = () => {
@@ -48,9 +48,9 @@
                       if (j === 10) {
                           clearInterval(myNewInterval);
                       }
-                      item.contentWindow.postMessage({urls: "test" }, "*");
+                      item.contentWindow.postMessage({url: "test" }, "*");
                   }, 500);
-                  item.contentWindow.postMessage({urls: "test" }, "*");
+                  item.contentWindow.postMessage({url: "test" }, "*");
               };
           }
         });
