@@ -17,7 +17,17 @@
         }
     </style>
     <script>
-        document.addEventListener("DOMContentLoaded",function(){window.addEventListener("message",function(e){var t=e.data.contentUrl;if(t){var n=document.getElementById("contentOverlay");n.setAttribute("data-lookbook-overlay-href",t),n.click()}},!1)});
+        document.addEventListener("DOMContentLoaded", function(){
+            window.addEventListener("message",
+                function(e) {
+                    var t=e.data.contentUrl;
+                    if(t){
+                        var n=document.getElementById("contentOverlay");
+                        n.setAttribute("data-lookbook-overlay-href",t),
+                        n.click()
+                    }
+            },!1)
+        });
 
         document.addEventListener('DOMContentLoaded', (event) => {
           const iframes = document.getElementsByClassName("pf_embeds");
