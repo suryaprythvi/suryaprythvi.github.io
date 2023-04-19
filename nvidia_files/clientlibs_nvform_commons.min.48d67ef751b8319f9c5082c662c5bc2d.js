@@ -1,0 +1,3 @@
+var NVIDIAGDC=NVIDIAGDC||{};
+NVIDIAGDC.AdaptiveForm.sendPostSubmitEmail=function(a,b,c){a={template:a,toAddresses:b,fromAddress:"no-reply@tmail.nvidia.com",staticData:c};$.ajax({url:NVIDIAGDC.apps.endpoint+"/aem-forms-api/api/v1/email/secure/send",type:"POST",headers:{Accept:"application/json","Content-Type":"application/json","form-submit-token":Cookies.get("form-submit-token")},xhrFields:{withCredentials:!0},data:JSON.stringify(a),success:function(a){console.log("Success duing ajax call");console.log(a)},error:function(a){console.log("error during ajax call");
+console.log(a)}})};

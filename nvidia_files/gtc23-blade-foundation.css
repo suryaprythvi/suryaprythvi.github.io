@@ -1,0 +1,112 @@
+/* GTC General blade styles - Foundation */
+@media only screen and (min-width: 640px) {
+#gtcs23-blade #retail-column .large-8 { width: 87.2093023255814%; padding: 0; }
+#gtcs23-blade #retail-column .large-4 { width: 12.7906976744186%; }
+#gtcs23-blade .faq .accordion-knowledge-base .wrapper .items > ul .item .faqItem > a .main-content { padding-top: 25px; }
+}
+
+@media only screen and (min-width: 1350px) {
+#gtcs23-blade #gtcs23-title .h2 { font-size:36px; }
+#gtcs23-blade #retail-column .large-4 { max-width: 165px; }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1349px) {
+#gtcs23-blade #gtcs23-title .h2 { font-size:28px; line-height: 28px; }
+/*#gtcs23-blade #retail-column .large-4 { min-width: 140px; } */
+}
+
+@media screen and (min-width: 640px) and (max-width: 1023px) {
+#gtcs23-blade #gtcs23-title .h2 { font-size:20px; line-height: 20px; }
+#gtcs23-blade #retail-column .large-4 { min-width: 115px; }
+#gtcs23-blade #retail-column .large-8 { width:100%; }
+}
+
+@media only screen and (max-width: 639px) {
+#gtcs23-blade #gtcs23-title .h2 { font-size:20px; }
+#gtcs23-blade #retail-column .large-4 { max-width: 105px; }
+#gtcs23-blade #retail-column .large-8 { padding-left:0; padding-right: 0; }
+#gtcs23-blade #copy-img-column .right-column.large-6 { padding-left: 0; }
+#gtcs23-blade .button-1, #gtcs23-blade .button-2, #gtcs23-blade .button-3, #gtcs23-blade .button-4 { padding-right: 0px; }
+#gtcs23-blade .buttonRow .mob-btnrowspace15 { padding: 0; }
+#gtcs23-blade .faq .accordion-knowledge-base .wrapper .items > ul .item .faqItem > a .main-content { padding-bottom:13px; }
+}
+
+#gtcs23-blade #retail-column .large-4 { left: -15px; }
+#gtcs23-blade #copy-img-column .left-column.large-6 { padding-left: 0; }
+#gtcs23-blade #copy-img-column .right-column.large-6 { padding-right: 0; }
+#gtcs23-blade .button-1, #gtcs23-blade .button-2, #gtcs23-blade .button-3, #gtcs23-blade .button-4 { padding-right: 20px; }
+#gtcs23-blade #gtcs23-logo { float: left; }
+#gtcs23-blade .faq .accordion-knowledge-base .wrapper .items > ul .item .faqItem > a .main-content > h4 { font-size:16px; color: #000; text-align: left; }
+#gtcs23-blade .faq .accordion-knowledge-base .wrapper { padding-left: 0; }
+
+/* GTC Sessions blade styles - Core */
+.nvGreen { color: #76b900; }
+
+#gtcs23-blade #gtc-session-blade p.title.color-brand-green.body-text { color: #76b900; margin-left: -30px; padding-left: 18px; border-left: 10px solid #76b900; padding-bottom: 0; margin-bottom: -25px; padding-top: 30px; }
+
+@media only screen and (min-width: 640px) {
+#gtcs23-blade #gtc-header-column .large-4 { width: calc(16% - 30px); }
+#gtcs23-blade #gtc-header-column  .large-8 { width: 84%;}
+}
+
+@media only screen and (min-width: 1350px) {
+#gtcs23-blade #gtc-header-column .large-4 { max-width: 150px; padding-left:0; }
+#gtc-header-column #gtcs23-title h3 { font-size: 20px; }
+}
+
+@media only screen and (max-width: 1349px) {
+#gtcs23-blade #gtc-session-blade p.title.color-brand-green.body-text { padding-top: 23px; }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1349px) {
+#gtcs23-blade #gtcs23-title .h2 { font-size:28px; line-height: 28px; }
+#gtcs23-blade #gtc-header-column .large-4 { min-width: 125px; padding-left:0; }
+#gtc-header-column #gtcs23-title h3 { font-size: 16px; }
+#gtcs23-blade #gtc-header-column  .large-8 {  padding-right: 0;padding-left: 0;}
+#gtc-session-blade .row .column { padding-left: 4px; }
+}
+
+@media screen and (min-width: 640px) and (max-width: 1023px) {
+#gtcs23-blade #gtcs23-title .h2 { font-size:20px; line-height: 20px; }
+#gtcs23-blade #gtc-header-column .large-4 { min-width: 100px; padding-left: 0;}
+#gtcs23-blade #gtc-header-column  .large-8 {  padding-right: 0;padding-left: 0;}
+#gtcs23-blade #gtcs23-title { padding-top: 5px; }
+#gtc-header-column #gtcs23-title h3 { font-size: 16px; }
+#gtc-session-blade .row .column { padding-left: 4px; }
+#gtc-session-blade .slick-slide { max-width: 290px; }
+}
+
+@media screen and (min-width: 568px) and (max-width: 639px) {
+#gtc-session-blade .slick-slide { max-width: 280px; }
+}
+
+@media only screen and (max-width: 639px) {
+#gtcs23-blade #gtcs23-title .h2 { font-size:20px; }
+#gtcs23-blade #gtc-header-column .large-4 { max-width: 85px; padding-left: 0;}
+#gtcs23-blade #gtc-header-column .large-8 { padding-left:0; padding-right: 0; }
+#gtcs23-blade #gtc-header-column.large-4 { margin-left: -15px; }
+#gtc-header-column #gtcs23-title h3 { font-size: 16px; }
+#gtc-session-blade .row .column { }
+#gtc-session-blade .slick-slide { max-width: 290px; }
+}
+
+/** Carousel **/
+#gtc-session-blade .slick-initialized .slick-slide > div { height: 100%; }
+#gtc-session-blade .row .column { height: 100%; padding-left: 4px; }
+#gtc-session-blade .slick-track { margin: 20px auto; display: flex; flex-wrap: wrap; }
+#gtc-session-blade .slick-initialized .slick-slide > div {}
+#gtc-session-blade .slick-slide { height: inherit !important; }
+#gtc-session-blade .slick-list { margin: 0 0; padding-left:0 !important; }
+#gtc-session-blade .column-container .column > .equi-height-col { height: 100%; padding: 0 15px 15px; }
+#gtc-session-blade h3 { margin-left: -30px; border-left: 10px solid #76b900; padding-left: 20px; padding-top: 30px; padding-bottom: 0; margin-bottom: 15px; display: -webkit-box; -webkit-line-clamp: 3;   -webkit-box-orient: vertical; overflow: hidden; }
+div#special-event h3 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; padding-bottom: 0; }
+#gtc-session-blade .description.body-text p { display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; padding-bottom: 0; }
+
+@media (max-width: 1023px){ 
+#gtc-session-blade .slick-track { /* left: -50px; */ }
+}
+
+/** end Carousel***/
+
+#secondary-btn.link-btn { border: 2px solid #76b900; color: #76b900; background-color: transparent; }
+#secondary-btn.link-btn:hover, #secondary-btn.link-btn:active { background-color: var(--custom-button-hover-color,rgba(118,185,0,.1)); box-shadow:none; }
