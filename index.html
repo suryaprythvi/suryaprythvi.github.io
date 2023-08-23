@@ -28,7 +28,7 @@
                     }
             },!1)
 
-            const url = new URL('https://example.com?foo=1&bar=2');
+            const url = new URL(window.location.href);
             const params = new URLSearchParams(url.search);
             if (params && params.get("fail")) {
                 if (top != self && top.location.hostname != self.location.hostname) top.location=location
