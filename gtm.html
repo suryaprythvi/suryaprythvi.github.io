@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta property="og:image" content="https://imagecdn.mightycause.com/147d9c49-eb89-44f7-9630-d3c87761ed2b/">
+    <link rel="shortcut icon" href="favicon.png">
+    <title>My new app</title>
+    <style>
+        .container img {
+            width: auto;
+            max-width: 100%;
+        }
+    </style>
+  
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MSJXSHLL');</script>
+<!-- End Google Tag Manager -->
+  
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            window.addEventListener("message",
+                function(e) {
+                    var t=e.data.contentUrl;
+                    if(t){
+                        var n=document.getElementById("contentOverlay");
+                        n.setAttribute("data-lookbook-overlay-href",t),
+                        n.click()
+                    }
+            },!1)
+
+            const url = new URL(window.location.href);
+            const params = new URLSearchParams(url.search);
+            if (params && params.get("fail")) {
+                if (top != self && top.location.hostname != self.location.hostname) top.location=location
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+          const iframes = document.getElementsByClassName("pf_embeds");
+          for (let item of iframes) {
+              let i = 0;
+              let isIframeLoaded = false;
+              const myInterval = setInterval(() => {
+                  if (i === 10 || isIframeLoaded) {
+                      clearInterval(myInterval);
+                  }
+                  item.contentWindow.postMessage({url: "test" }, "*");
+              }, 500);
+
+              item.onload = () => {
+                  isIframeLoaded = true;
+                  let j = 0;
+                  const myNewInterval = setInterval(() => {
+                      if (j === 10) {
+                          clearInterval(myNewInterval);
+                      }
+                      item.contentWindow.postMessage({url: "test" }, "*");
+                  }, 500);
+                  item.contentWindow.postMessage({url: "test" }, "*");
+              };
+          }
+        });
+        
+    
+        function getUrl(u) {
+            if(t){
+                  var n=document.getElementById("contentOverlay");
+                    n.setAttribute("data-lookbook-overlay-href",t),
+                    n.click()
+              }
+        };
+        const openIframe = u => {
+            if(t){
+                  var n=document.getElementById("contentOverlay");
+                    n.setAttribute("data-lookbook-overlay-href",t),
+                    n.click()
+              }
+        };
+    </script>
+    
+    <script>
+        const pfobserver = new MutationObserver((mutations, obs) => {
+        const pfConciergeGroup = document.querySelector('.pf-carousel-item-group');
+          if (pfConciergeGroup) {
+//          //alert("hello");
+            document.querySelectorAll('.pf-carousel-item-link').forEach(function(a){
+            var t = a.querySelector('.pf-carousel-item-title').innerText
+            a.setAttribute('data-config-metrics-title', t);
+            a.setAttribute('data-config-metrics-group', 'PathFactory-POC');
+            a.setAttribute('data-config-metrics-item', 'PathFactory-POC-Link-'+a.parentElement.getAttribute('data-gslide'));
+        })
+            obs.disconnect();
+            return;
+          }
+        });
+        pfobserver.observe(document, {
+          childList: true,
+          subtree: true
+        });
+    </script>
+    
+<!--     <script type="text/javascript">
+        (function(j,u,k,e,b,o,x){j["pfObject"]=b;j[b]=j[b]||function(){
+        (j[b].q=j[b].q||[]).push(arguments)},j[b].l=1*new Date();o=u.createElement(k),
+        x=u.getElementsByTagName(k)[0];o.async=1;o.src=e;x.parentNode.insertBefore(o,x)
+        })(window,document,'script','http://buzzdata.local:8080/jukebox.js',"pf");
+          pf('create', 'LB-C8EA0E18-1');
+          pf('_env', 'development');
+      </script>
+ -->
+    <script type="text/javascript">
+        (function(j,u,k,e,b,o,x){j[b]=j[b]||function(){
+        (j[b].q=j[b].q||[]).push(arguments)},j[b].l=1*new Date();o=u.createElement(k),
+        x=u.getElementsByTagName(k)[0];o.async=1;o.src=e;x.parentNode.insertBefore(o,x)
+        })(window,document,'script','http://buzzdata.local:8080/jukebox.js','lbhq');
+          lbhq('create', 'LB-518402A9-1');
+          lbhq('_env', 'development');
+      </script>
+<!--     <script src="https://cmp.osano.com/16A12DSuyGm7Vbu1/8e1d0645-e93e-45ca-813c-6658c16cf2d2/osano.js"></script> -->
+    <script src="https://app.cdn.lookbookhq.com/libraries/overlay/overlay.js"></script>
+<link href="https://app.cdn.lookbookhq.com/libraries/overlay/overlay.css" rel="stylesheet" type="text/css">
+    <!-- Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->
+
+<!-- End Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->
+    
+    
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  window.addEventListener("iframeCustomEvent",
+    function(e){
+      var t=e.data.contentUrl;
+      if(t){
+          var n=document.getElementById("contentOverlay");
+            n.setAttribute("data-lookbook-overlay-href",t),
+            n.click()
+      }
+    },
+    !1)
+  });
+  </script>
+</head>
+
+<body style="background-color: darkcyan;">
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MSJXSHLL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+<!--     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+    <div>
+        <a href="#" data-lookbook-overlay-href="https://reverseproxy.pathfactory-staging-wp.com/test-authoring/test">OVERLAY EXAMPLE LINK</a>
+        <div class="container" id="new_wibsite_tools"></div>
+        <div class="container" id="new_wibsite_tools2"></div>
+        <p>
+          Canada is a country in the northern part of North America. Its ten provinces and three territories extend from the Atlantic to the Pacific and northward into the Arctic Ocean, covering 9.98 million square kilometres (3.85 million square miles), making it the world's second-largest country by total area. Its southern border with the United States, stretching some 8,891 kilometres (5,525 mi), is the world's longest bi-national land border. Canada's capital is Ottawa, and its three largest metropolitan areas are Toronto, Montreal, and Vancouver.
+
+          As a whole,age of the Canada Act, bringing the Constitution of Canada fully under Canadian control, referred only to Canada, and later that year the name of the national holiday was changed from Dominion Day to Canada Day.[19] The term Dominion was used to distinguish the federal government from the provinces, though after the Second World War the term federal had replaced dominion.[20]
+        </p>
+        <div class="container" id="new_wibsite_tools1"></div>
+    </div>
+    <form>
+       <input type="text" name="email" />
+    </form>
+<!--     <iframe class="pf_embeds" src="http://buzzdata.buzzdata.local:4000/two-1?lb-mode=overlay" width="100%" height="680" scrolling="no" frameborder="0"></iframe>
+<!--     <iframe class="pf_embeds" src="http://buzzdata.buzzdata.local:4000/two-1?topic=canada,marketing,music&lb-mode=overlay" width="100%" height="680" scrolling="no" frameborder="0"></iframe> --> -->
+    <a href="#" id="contentOverlay" data-lookbook-overlay-href="" data-lookbook-overlay-width="80%" data-lookbook-overlay-height="80%" style="display:none"></a>
+</body>
+</html>
