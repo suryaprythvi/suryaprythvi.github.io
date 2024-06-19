@@ -77,6 +77,23 @@
               }
         };
     </script>
+
+    <script defer="defer" type="text/javascript" nonce="217ca87a8ec993c6ff03d9ceb67d27a3">
+        function getCookie(name) {
+          var re = new RegExp(name + "=([^;]+)");
+          var value = re.exec(document.cookie);
+          return (value != null) ? unescape(value[1]) : null;
+        }
+        var user_unique = getCookie("user_unique_id");
+        if (user_unique !== null) {
+          var user_unique_component = decodeURIComponent(user_unique);
+          var user_unique_arr = JSON.parse(user_unique_component);
+          var unique_id_val = user_unique_arr["user_unique_id"];
+          if (unique_id_val !== "") {
+            dataLayer = [{ "user_id":unique_id_val}];
+          }
+        }
+    </script>
     
     <script>
         const pfobserver = new MutationObserver((mutations, obs) => {
@@ -116,7 +133,7 @@ n&&j.setAttribute('nonce',n.nonce||n.getAttribute('nonce'));x.parentNode.insertB
         })(window,document,'script','http://buzzdata.local:8080/jukebox.js','lbhq');
           lbhq('create', 'LB-518402A9-1');
           lbhq('_env', 'development');
-          lbhq('nonce', 'nonce_value_should_come_here');
+          // lbhq('nonce', 'nonce_value_should_come_here');
       </script>
 <!--     <script src="https://cmp.osano.com/16A12DSuyGm7Vbu1/8e1d0645-e93e-45ca-813c-6658c16cf2d2/osano.js"></script> -->
     <script src="https://app.cdn.lookbookhq.com/libraries/overlay/overlay.js"></script>
