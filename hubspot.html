@@ -11,12 +11,6 @@
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" required><br><br>
     
-    <label for="firstname">First Name:</label>
-    <input type="text" id="firstname" name="firstname" required><br><br>
-    
-    <label for="lastname">Last Name:</label>
-    <input type="text" id="lastname" name="lastname" required><br><br>
-    
     <button type="submit">Submit</button>
   </form>
 
@@ -25,7 +19,7 @@
       event.preventDefault(); // Prevent the default form submission
 
       const portalId = '46944945'; // Replace with your HubSpot portal ID
-      const formGuid = '27660613-81a8-404c-951c-78367a424851'; // Replace with your form GUID
+      const formGuid = '7c929a0a-3805-4fec-a85e-1e8df20bb8c0'; // Replace with your form GUID
       const endpoint = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formGuid}`;
       
       const email = document.getElementById('email').value;
