@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HubSpot Form Submission</title>
+</head>
+<body>
+  <h1>Submit to HubSpot</h1>
+  <form id="hubspot-form">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
+    
+    <label for="firstname">First Name:</label>
+    <input type="text" id="firstname" name="firstname" required><br><br>
+    
+    <label for="lastname">Last Name:</label>
+    <input type="text" id="lastname" name="lastname" required><br><br>
+    
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById('hubspot-form').addEventListener('submit', async function(event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      const portalId = '46944945'; // Replace with your HubSpot portal ID
+      const formGuid = '27660613-81a8-404c-951c-78367a424851'; // Replace with your form GUID
+      const endpoint = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formGuid}`;
+      
+      const email = document.getElementById('email').value;
+      const firstname = document.getElementById('firstname').value;
+      const lastname = document.getElementById('lastname').value;
+
+      const payload = {
+        fields: [
+          { name: 'email', value: email },
+          { name: 'firstname', value: firstname },
+          { name: 'lastname', value: lastname }
+        ],
+        context: {
+          pageUri: window.location.href,
+          pageName: document.title
+        },
+        legalConsentOptions: {
+          consent: {
+            consentToProcess: true,
+            text: "I agree to allow Example Company to store and process my personal data."
+          }
+        }
+      };
+
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+          console.log('Form submitted successfully!');
+          window.parent.postMessage({
+            conversionUrl: document.location.href,
+            referrer: document.referrer,
+            email: email,
+            lookbookExternalForm: true
+          }, "*");
+        } else {
+          console.error('Form submission failed:', response.statusText);
+          console.log('Failed to submit form.');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred during form submission.');
+      }
+    });
+  </script>
+</body>
+</html>
