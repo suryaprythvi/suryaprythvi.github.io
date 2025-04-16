@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="favicon.png">
     <title>My new app</title>
     <style>
-/*         #new_wibsite_tools {
+        #new_wibsite_tools {
               min-height: 100vh;
               width: 100%;
         }
@@ -19,7 +19,7 @@
         #new_wibsite_tools2 {
               min-height: 200vh;
               width: 100%;
-        } */
+        }
     </style>
     <style>
         .container img {
@@ -39,16 +39,16 @@
             
               return actualRowHeight * numRows; // final min-height in px
             }
-            const forNWT = calculateMinHeightPx(2);
-            const forNWT2 = calculateMinHeightPx(4);
-            const nwtEle = document.getElementById("new_wibsite_tools");
-            const nwtEle2 = document.getElementById("new_wibsite_tools2");
-            if (nwtEle) {
-                nwtEle.style.minHeight = forNWT + "px";
-            }
-            if (nwtEle2) {
-                nwtEle2.style.minHeight = forNWT2 + "px";
-            }
+            // const forNWT = calculateMinHeightPx(2);
+            // const forNWT2 = calculateMinHeightPx(4);
+            // const nwtEle = document.getElementById("new_wibsite_tools");
+            // const nwtEle2 = document.getElementById("new_wibsite_tools2");
+            // if (nwtEle) {
+            //     nwtEle.style.minHeight = forNWT + "px";
+            // }
+            // if (nwtEle2) {
+            //     nwtEle2.style.minHeight = forNWT2 + "px";
+            // }
             window.addEventListener("message",
                 function(e) {
                     var t=e.data.contentUrl;
