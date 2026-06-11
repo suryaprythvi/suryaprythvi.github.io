@@ -166,6 +166,55 @@
           lbhq('create', 'LB-518402A9-1');
           lbhq('_env', 'development');
           lbhq('nonce', 'random_nonce_value_here');
+
+        function getCookie(name) {
+            const value = `; ${document.cookie}`; 
+            const parts = value.split(`; ${name}=`); 
+            if (parts.length === 2) {
+                return parts.pop().split(';').shift();
+            }
+            return null;
+        }
+            
+        async function getRecommendations({
+          clientId,
+          pageUrl,
+          visitorUuid,
+          contentPoolId,
+          recommendationType,
+          version = 3
+        }) {
+          const params = new URLSearchParams({
+            client_id: clientId,
+            url: pageUrl,
+            version,
+            visitor_uuid: visitorUuid,
+            content_pool_id: contentPoolId,
+            recommendation_type: recommendationType
+          });
+         if (!visitorUuid) return;
+         const response = await fetch(
+        `https://jukebox.pathfactory.com/api/public/v3/recommendations?${params}`
+          );
+          if (!response.ok) {
+            throw new Error(`Request failed: ${response.status}`);
+          }
+          return response.json();
+        }
+        
+        getRecommendations({
+          clientId: "LB-07250006-7",
+          pageUrl: window.location.href,
+          visitorUuid: getCookie('vid') || '',
+          contentPoolId: "98765",
+          recommendationType: "relatedcontent"
+        })
+        .then(data => {
+          console.log("Recommendations:", data);
+        })
+        .catch(error => {
+          console.error("Recommendation API Error:", error);
+        });
       </script>
 <!--     <script src="https://cmp.osano.com/16A12DSuyGm7Vbu1/8e1d0645-e93e-45ca-813c-6658c16cf2d2/osano.js"></script> -->
     <script src="https://app.cdn.lookbookhq.com/libraries/overlay/overlay.js"></script>
