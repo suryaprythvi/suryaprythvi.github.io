@@ -131,7 +131,7 @@
         const pfobserver = new MutationObserver((mutations, obs) => {
         const pfConciergeGroup = document.querySelector('.pf-carousel-item-group');
           if (pfConciergeGroup) {
-//          //alert("hello");
+            // alert("hello");
             document.querySelectorAll('.pf-carousel-item-link').forEach(function(a){
             var t = a.querySelector('.pf-carousel-item-title').innerText
             a.setAttribute('data-config-metrics-title', t);
@@ -194,7 +194,7 @@
           });
          // if (!visitorUuid) return;
          const response = await fetch(
-        `https://jukebox.pathfactory.com/api/public/v3/recommendations?${params}`
+        `https://default.pathfactory.local:4000/api/public/v3/recommendations?${params}`
           );
           if (!response.ok) {
             throw new Error(`Request failed: ${response.status}`);
