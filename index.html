@@ -28,6 +28,31 @@
             max-width: 100%;
         }
     </style>
+    <div style="width: 100%; height: 600px">
+  <div id="genie-container" style="width: 100%; height: 100%"></div>
+</div>
+<script type="module">
+  try {
+    const { embeds } = await import(
+      'https://unisphere.nvp1.ovp.kaltura.com/v1/loader/index.esm.js'
+    );
+
+    const { destroy, apis } = await embeds.workspace({
+      apis: ['genieChat'],
+      session: {
+        widgetId: '0_583p0jbl',
+        partnerId: 174372,
+        avatar: { stage: 'fullscreen' },
+      },
+    });
+
+    const { remove } = apis.genieChat.contained({
+      elementId: 'genie-container',
+    });
+  } catch (error) {
+    console.error('Failed to create embeds:', error);
+  }
+</script>
     <script>
         function calculateMinHeightPx(numRows) {
           const rowHeightAtBase = 250; // px
