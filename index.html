@@ -38,12 +38,9 @@
     );
 
     const { destroy, apis } = await embeds.workspace({
+      env: 'qa',
       apis: ['genieChat'],
-      session: {
-        widgetId: '0_583p0jbl',
-        partnerId: 174372,
-        avatar: { stage: 'fullscreen' },
-      },
+      session: { widgetId: '0_583p0jbl', partnerId: 174372 }
     });
 
     const { remove } = apis.genieChat.contained({
