@@ -15,184 +15,107 @@
             width: auto;
             max-width: 100%;
         }
-    </style>
-    <script type="text/javascript">
-        (function(j,u,k,e,b,o,x){j["pfObject"]=b;j[b]=j[b]||function(){
-        (j[b].q=j[b].q||[]).push(arguments)},j[b].l=1*new Date();o=u.createElement(k),
-        x=u.getElementsByTagName(k)[0];o.async=1;o.src=e;x.parentNode.insertBefore(o,x)
-        })(window,document,'script','http://buzzdata.local:8080/jukebox.js',"pf");
-          pf('create', 'LB-96489541-1');
-          pf('_env', 'development');
-      </script>
- 
-  
-    <script src="https://cmp.osano.com/16A12DSuyGm7Vbu1/8e1d0645-e93e-45ca-813c-6658c16cf2d2/osano.js"></script>
-    <script src="https://app.cdn.lookbookhq.com/libraries/overlay/overlay.js"></script>
-<link href="https://app.cdn.lookbookhq.com/libraries/overlay/overlay.css" rel="stylesheet" type="text/css">
-    <!-- Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->
-<script type="text/javascript" async=true>
-(function() {
-  var host = window.location.hostname;
-  var element = document.createElement('script');
-  var firstScript = document.getElementsByTagName('script')[0];
-  var url = 'https://quantcast.mgr.consensu.org'
-    .concat('/choice/', 'MezrD50gV0jyR', '/', host, '/choice.js')
-  var uspTries = 0;
-  var uspTriesLimit = 3;
-  element.async = true;
-  element.type = 'text/javascript';
-  element.src = url;
-
-  firstScript.parentNode.insertBefore(element, firstScript);
-
-  function makeStub() {
-    var TCF_LOCATOR_NAME = '__tcfapiLocator';
-    var queue = [];
-    var win = window;
-    var cmpFrame;
-
-    function addFrame() {
-      var doc = win.document;
-      var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
-
-      if (!otherCMP) {
-        if (doc.body) {
-          var iframe = doc.createElement('iframe');
-
-          iframe.style.cssText = 'display:none';
-          iframe.name = TCF_LOCATOR_NAME;
-          doc.body.appendChild(iframe);
-        } else {
-          setTimeout(addFrame, 5);
-        }
-      }
-      return !otherCMP;
-    }
-
-    function tcfAPIHandler() {
-      var gdprApplies;
-      var args = arguments;
-
-      if (!args.length) {
-        return queue;
-      } else if (args[0] === 'setGdprApplies') {
-        if (
-          args.length > 3 &&
-          args[2] === 2 &&
-          typeof args[3] === 'boolean'
-        ) {
-          gdprApplies = args[3];
-          if (typeof args[2] === 'function') {
-            args[2]('set', true);
+         #consent-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+            z-index: 9999;
+            display: none; /* Hidden by default, toggled by JS */
           }
-        }
-      } else if (args[0] === 'ping') {
-        var retr = {
-          gdprApplies: gdprApplies,
-          cmpLoaded: false,
-          cmpStatus: 'stub'
+          .consent-btn {
+            margin: 0 10px;
+            padding: 8px 16px;
+            cursor: pointer;
+          }
+    </style>
+     <script src="http://localhost:5173/dist/journey-agent.js"></script>
+     <script>
+        window.Journey = window.Journey || function() {
+          (window.Journey.q = window.Journey.q || []).push(arguments);
         };
-
-        if (typeof args[2] === 'function') {
-          args[2](retr);
-        }
-      } else {
-        queue.push(args);
-      }
-    }
-
-    function postMessageEventHandler(event) {
-      var msgIsString = typeof event.data === 'string';
-      var json = {};
-
-      try {
-        if (msgIsString) {
-          json = JSON.parse(event.data);
-        } else {
-          json = event.data;
-        }
-      } catch (ignore) {}
-
-      var payload = json.__tcfapiCall;
-
-      if (payload) {
-        window.__tcfapi(
-          payload.command,
-          payload.version,
-          function(retValue, success) {
-            var returnMsg = {
-              __tcfapiReturn: {
-                returnValue: retValue,
-                success: success,
-                callId: payload.callId
-              }
-            };
-            if (msgIsString) {
-              returnMsg = JSON.stringify(returnMsg);
+    
+        // 1. Listen for state events
+        window.Journey("on", "ready", function(config) {
+          console.log("[Journey Event] Ready:", config);
+        });
+    
+        window.Journey("on", "identity", function(id) {
+          console.log("[Journey Event] Identity:", id);
+        });
+    
+        window.Journey("on", "consent", function(consent) {
+          console.log("[Journey Event] Consent updated:", consent);
+        });
+    
+        // 2. Initialize with your client ID
+        window.Journey("init", { clientId: "LB-518402A9-1" });
+      </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const consentBanner = document.getElementById("consent-banner");
+          const btnYes = document.getElementById("consent-yes");
+          const btnNo = document.getElementById("consent-no");
+        
+          // Helper function to read a cookie
+          function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+          }
+        
+          // Helper function to set a cookie (valid for 365 days)
+          function setCookie(name, value) {
+            const date = new Date();
+            date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
+            document.cookie = `${name}=${value};expires=${date.toUTCString()};path=/`;
+          }
+        
+          // Placeholder: Call third-party methods based on consent
+          function handleThirdPartyScripts(isAccepted) {
+            if (isAccepted) {
+                Journey('setConsentSettings', { accepted: true })
+              console.log("Consent accepted: Load Google Analytics, Meta Pixel, etc.");
+              // TODO: Initialize tracking scripts here
+            } else {
+                Journey('setConsentSettings', { accepted: false })
+              console.log("Consent declined: Do not load tracking scripts.");
+              // TODO: Handle opt-out logic if necessary
             }
-            if (event && event.source && event.source.postMessage) {
-              event.source.postMessage(returnMsg, '*');
-            }
-          },
-          payload.parameter
-        );
-      }
-    }
-
-    while (win) {
-      try {
-        if (win.frames[TCF_LOCATOR_NAME]) {
-          cmpFrame = win;
-          break;
-        }
-      } catch (ignore) {}
-
-      if (win === window.top) {
-        break;
-      }
-      win = win.parent;
-    }
-    if (!cmpFrame) {
-      addFrame();
-      win.__tcfapi = tcfAPIHandler;
-      win.addEventListener('message', postMessageEventHandler, false);
-    }
-  };
-
-  makeStub();
-
-  var uspStubFunction = function() {
-    var arg = arguments;
-    if (typeof window.__uspapi !== uspStubFunction) {
-      setTimeout(function() {
-        if (typeof window.__uspapi !== 'undefined') {
-          window.__uspapi.apply(window.__uspapi, arg);
-        }
-      }, 500);
-    }
-  };
-
-  var checkIfUspIsReady = function() {
-    uspTries++;
-    if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
-      console.warn('USP is not accessible');
-    } else {
-      clearInterval(uspInterval);
-    }
-  };
-
-  if (typeof window.__uspapi === 'undefined') {
-    window.__uspapi = uspStubFunction;
-    var uspInterval = setInterval(checkIfUspIsReady, 6000);
-  }
-})();
-</script>
-<script>
-    if(Osano) {
-        Osano.cm.addEventListener('osano-cm-consent-saved', (change) => console.log('Consent preference changed:', JSON.stringify(change)));
-    }
-</script>
-<!-- End Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->
+          }
+        
+          // Check if consent has already been given or declined
+          const currentConsent = getCookie("user_consent");
+        
+          if (!currentConsent) {
+            // Show UI if no cookie is found
+            consentBanner.style.display = "block";
+          } else if (currentConsent === "accepted") {
+            // Optionally fire scripts immediately on page load if already accepted
+            handleThirdPartyScripts(true);
+          }
+        
+          // Listen for 'Yes' click
+          btnYes.addEventListener("click", function () {
+            setCookie("user_consent", "accepted");
+            consentBanner.style.display = "none";
+            handleThirdPartyScripts(true);
+          });
+        
+          // Listen for 'No' click
+          btnNo.addEventListener("click", function () {
+            setCookie("user_consent", "declined");
+            consentBanner.style.display = "none";
+            handleThirdPartyScripts(false);
+          });
+        });
+    </script>
 </head>
 
 <body style="background-color: darkcyan;">
@@ -213,5 +136,10 @@
     <form>
        <input type="text" name="email" />
     </form>
+    <div id="consent-banner">
+      <span>We use cookies to improve your experience. Do you consent to our use of cookies?</span>
+      <button id="consent-yes" class="consent-btn">Yes, I accept</button>
+      <button id="consent-no" class="consent-btn">No, I decline</button>
+    </div>
 </body>
 </html>
