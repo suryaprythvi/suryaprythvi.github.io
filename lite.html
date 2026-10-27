@@ -34,29 +34,32 @@
             cursor: pointer;
           }
     </style>
-    <script src="http://localhost:5173/dist/journey-agent.js"></script>
+    <!-- 1. Pre-init stub: queues commands before script loads -->
+      <script>
+        window.Journey = window.Journey || function() {
+          (window.Journey.q = window.Journey.q || []).push(arguments);
+        };
+    
+        // 2. Register listeners and init immediately
+        window.Journey("on", "ready", function(config) {
+          console.log("[Journey] Ready:", config);
+        });
+    
+        window.Journey("on", "identity", function(identity) {
+          console.log("[Journey] Identity:", identity);
+        });
+    
+        window.Journey("on", "consent", function(consent) {
+          console.log("[Journey] Consent:", consent);
+        });
+    
+        window.Journey("init", { clientId: "LB-518402A9-1" });
+      </script>
+    
+      <!-- 3. Load standalone bundle asynchronously -->
+      <script async src="http://localhost:5173/dist/journey-agent.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            window.Journey = window.Journey || function() {
-              (window.Journey.q = window.Journey.q || []).push(arguments);
-            };
-        
-            // 1. Listen for state events
-            window.Journey("on", "ready", function(config) {
-              console.log("[Journey Event] Ready:", config);
-            });
-        
-            window.Journey("on", "identity", function(id) {
-              console.log("[Journey Event] Identity:", id);
-            });
-        
-            window.Journey("on", "consent", function(consent) {
-              console.log("[Journey Event] Consent updated:", consent);
-            });
-        
-            // 2. Initialize with your client ID
-            window.Journey("init", { clientId: "LB-518402A9-1" });
-            
           const consentBanner = document.getElementById("consent-banner");
           const btnYes = document.getElementById("consent-yes");
           const btnNo = document.getElementById("consent-no");
