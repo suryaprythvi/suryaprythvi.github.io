@@ -34,19 +34,16 @@
             cursor: pointer;
           }
     </style>
-    <!-- 1. Pre-init stub: queues commands before script loads -->
-      <script>
-        window.Journey = window.Journey || function() {
-          (window.Journey.q = window.Journey.q || []).push(arguments);
-        };
     
-        // 2. Register listeners and init immediately
+    <script src="http://localhost:5173/dist/journey-agent.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
         window.Journey("on", "ready", function(config) {
           console.log("[Journey] Ready:", config);
         });
     
-        window.Journey("on", "identity", function(identity) {
-          console.log("[Journey] Identity:", identity);
+        window.Journey("on", "identity", function(id) {
+          console.log("[Journey] Identity:", id);
         });
     
         window.Journey("on", "consent", function(consent) {
@@ -54,12 +51,7 @@
         });
     
         window.Journey("init", { clientId: "LB-518402A9-1" });
-      </script>
-    
-      <!-- 3. Load standalone bundle asynchronously -->
-      <script async src="http://localhost:5173/dist/journey-agent.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
+            
           const consentBanner = document.getElementById("consent-banner");
           const btnYes = document.getElementById("consent-yes");
           const btnNo = document.getElementById("consent-no");
