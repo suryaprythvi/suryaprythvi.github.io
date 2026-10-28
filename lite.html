@@ -34,81 +34,112 @@
             cursor: pointer;
           }
     </style>
-    
-    <script src="http://localhost:5173/dist/journey-agent.js"></script>
+
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-        window.Journey("on", "ready", function(config) {
-          console.log("[Journey] Ready:", config);
-        });
+      (function(j, o, u, r, n, e, y) {
+        j[n] = j[n] || function() {
+          (j[n].q = j[n].q || []).push(arguments);
+        };
+        j[n].l = 1 * new Date();
+        e = o.createElement(u);
+        y = o.getElementsByTagName(u)[0];
+        e.async = 1;
+        e.src = r;
+        y.parentNode.insertBefore(e, y);
+      })(
+        window,
+        document,
+        'script',
+        'http://localhost:5173/dist/journey-agent.js',
+        'Journey'
+      );
     
-        window.Journey("on", "identity", function(id) {
-          console.log("[Journey] Identity:", id);
-        });
+      // 1. Listen for events (optional)
+      Journey('on', 'ready', function(config) {
+        console.log('[Journey] Ready:', config);
+      });
     
-        window.Journey("on", "consent", function(consent) {
-          console.log("[Journey] Consent:", consent);
-        });
+      Journey('on', 'identity', function(identity) {
+        console.log('[Journey] Visitor ID:', identity.visitorId);
+      });
     
-        window.Journey("init", { clientId: "LB-518402A9-1" });
+      // 2. Initialize tracking
+      Journey('init', { clientId: 'LB-518402A9-1' });
+    </script>
+    <!-- <script src="http://localhost:5173/dist/journey-agent.js"></script> -->
+    <script>
+        // document.addEventListener("DOMContentLoaded", function () {
+        // window.Journey("on", "ready", function(config) {
+        //   console.log("[Journey] Ready:", config);
+        // });
+    
+        // window.Journey("on", "identity", function(id) {
+        //   console.log("[Journey] Identity:", id);
+        // });
+    
+        // window.Journey("on", "consent", function(consent) {
+        //   console.log("[Journey] Consent:", consent);
+        // });
+    
+        // window.Journey("init", { clientId: "LB-518402A9-1" });
             
-          const consentBanner = document.getElementById("consent-banner");
-          const btnYes = document.getElementById("consent-yes");
-          const btnNo = document.getElementById("consent-no");
+        //   const consentBanner = document.getElementById("consent-banner");
+        //   const btnYes = document.getElementById("consent-yes");
+        //   const btnNo = document.getElementById("consent-no");
         
-          // Helper function to read a cookie
-          function getCookie(name) {
-            const value = `; ${document.cookie}`;
-            const parts = value.split(`; ${name}=`);
-            if (parts.length === 2) return parts.pop().split(';').shift();
-            return null;
-          }
+        //   // Helper function to read a cookie
+        //   function getCookie(name) {
+        //     const value = `; ${document.cookie}`;
+        //     const parts = value.split(`; ${name}=`);
+        //     if (parts.length === 2) return parts.pop().split(';').shift();
+        //     return null;
+        //   }
         
-          // Helper function to set a cookie (valid for 365 days)
-          function setCookie(name, value) {
-            const date = new Date();
-            date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
-            document.cookie = `${name}=${value};expires=${date.toUTCString()};path=/`;
-          }
+        //   // Helper function to set a cookie (valid for 365 days)
+        //   function setCookie(name, value) {
+        //     const date = new Date();
+        //     date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
+        //     document.cookie = `${name}=${value};expires=${date.toUTCString()};path=/`;
+        //   }
         
-          // Placeholder: Call third-party methods based on consent
-          function handleThirdPartyScripts(isAccepted) {
-            if (isAccepted) {
-                Journey('setConsentSettings', { accepted: true })
-              console.log("Consent accepted: Load Google Analytics, Meta Pixel, etc.");
-              // TODO: Initialize tracking scripts here
-            } else {
-                Journey('setConsentSettings', { accepted: false })
-              console.log("Consent declined: Do not load tracking scripts.");
-              // TODO: Handle opt-out logic if necessary
-            }
-          }
+        //   // Placeholder: Call third-party methods based on consent
+        //   function handleThirdPartyScripts(isAccepted) {
+        //     if (isAccepted) {
+        //         Journey('setConsentSettings', { accepted: true })
+        //       console.log("Consent accepted: Load Google Analytics, Meta Pixel, etc.");
+        //       // TODO: Initialize tracking scripts here
+        //     } else {
+        //         Journey('setConsentSettings', { accepted: false })
+        //       console.log("Consent declined: Do not load tracking scripts.");
+        //       // TODO: Handle opt-out logic if necessary
+        //     }
+        //   }
         
-          // Check if consent has already been given or declined
-          const currentConsent = getCookie("user_consent");
+        //   // Check if consent has already been given or declined
+        //   const currentConsent = getCookie("user_consent");
         
-          if (!currentConsent) {
-            // Show UI if no cookie is found
-            consentBanner.style.display = "block";
-          } else if (currentConsent === "accepted") {
-            // Optionally fire scripts immediately on page load if already accepted
-            handleThirdPartyScripts(true);
-          }
+        //   if (!currentConsent) {
+        //     // Show UI if no cookie is found
+        //     consentBanner.style.display = "block";
+        //   } else if (currentConsent === "accepted") {
+        //     // Optionally fire scripts immediately on page load if already accepted
+        //     handleThirdPartyScripts(true);
+        //   }
         
-          // Listen for 'Yes' click
-          btnYes.addEventListener("click", function () {
-            setCookie("user_consent", "accepted");
-            consentBanner.style.display = "none";
-            handleThirdPartyScripts(true);
-          });
+        //   // Listen for 'Yes' click
+        //   btnYes.addEventListener("click", function () {
+        //     setCookie("user_consent", "accepted");
+        //     consentBanner.style.display = "none";
+        //     handleThirdPartyScripts(true);
+        //   });
         
-          // Listen for 'No' click
-          btnNo.addEventListener("click", function () {
-            setCookie("user_consent", "declined");
-            consentBanner.style.display = "none";
-            handleThirdPartyScripts(false);
-          });
-        });
+        //   // Listen for 'No' click
+        //   btnNo.addEventListener("click", function () {
+        //     setCookie("user_consent", "declined");
+        //     consentBanner.style.display = "none";
+        //     handleThirdPartyScripts(false);
+        //   });
+        // });
     </script>
 </head>
 
