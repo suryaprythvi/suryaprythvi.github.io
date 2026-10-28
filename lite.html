@@ -62,6 +62,10 @@
       Journey('on', 'identity', function(identity) {
         console.log('[Journey] Visitor ID:', identity.visitorId);
       });
+
+        window.Journey("on", "consent", function(consent) {
+          console.log("[Journey] Consent:", consent);
+        });
     
       // 2. Initialize tracking
       Journey('init', { clientId: 'LB-518402A9-1' });
