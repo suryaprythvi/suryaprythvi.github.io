@@ -34,41 +34,60 @@
             cursor: pointer;
           }
     </style>
+    <script type="module">
+        try {
+            const { embeds } = await import(
+              'https://unisphere.nvp1.ovp.kaltura.com/v1/loader/index.esm.js'
+            );
+            
+            const { destroy, apis } = await embeds.workspace({
+              env: 'qa',
+              apis: ['genieChat'],
+              session: { widgetId: '0_583p0jbl', partnerId: 174372 }
+            });
+            
+            const { remove } = apis.genieChat.floater();
 
+            (function(j, o, u, r, n, e, y) {
+                j[n] = j[n] || function() {
+                  (j[n].q = j[n].q || []).push(arguments);
+                };
+                j[n].l = 1 * new Date();
+                e = o.createElement(u);
+                y = o.getElementsByTagName(u)[0];
+                e.async = 1;
+                e.src = r;
+                y.parentNode.insertBefore(e, y);
+              })(
+                window,
+                document,
+                'script',
+                'http://localhost:5173/dist/journey-agent.js',
+                'Journey'
+              );
+            
+              // 1. Listen for events (optional)
+              Journey('on', 'ready', function(config) {
+                console.log('[Journey] Ready:', config);
+              });
+            
+              Journey('on', 'identity', function(identity) {
+                console.log('[Journey] Visitor ID:', identity.visitorId);
+              });
+        
+                window.Journey("on", "consent", function(consent) {
+                  console.log("[Journey] Consent:", consent);
+                });
+            
+              // 2. Initialize tracking
+              Journey('init', { clientId: 'LB-518402A9-1' });
+                    
+        } catch (error) {
+            console.error('Failed to create embeds:', error);
+        }
+    </script>
     <script>
-      (function(j, o, u, r, n, e, y) {
-        j[n] = j[n] || function() {
-          (j[n].q = j[n].q || []).push(arguments);
-        };
-        j[n].l = 1 * new Date();
-        e = o.createElement(u);
-        y = o.getElementsByTagName(u)[0];
-        e.async = 1;
-        e.src = r;
-        y.parentNode.insertBefore(e, y);
-      })(
-        window,
-        document,
-        'script',
-        'http://localhost:5173/dist/journey-agent.js',
-        'Journey'
-      );
-    
-      // 1. Listen for events (optional)
-      Journey('on', 'ready', function(config) {
-        console.log('[Journey] Ready:', config);
-      });
-    
-      Journey('on', 'identity', function(identity) {
-        console.log('[Journey] Visitor ID:', identity.visitorId);
-      });
-
-        window.Journey("on", "consent", function(consent) {
-          console.log("[Journey] Consent:", consent);
-        });
-    
-      // 2. Initialize tracking
-      Journey('init', { clientId: 'LB-518402A9-1' });
+      
     </script>
     <!-- <script src="http://localhost:5173/dist/journey-agent.js"></script> -->
     <script>
