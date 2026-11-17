@@ -129,7 +129,7 @@
           function handleThirdPartyScripts(isAccepted) {
             if (isAccepted) {
                 Journey('setConsentSettings', { accepted: true })
-              console.log("Consent accepted: Load Google Analytics, Meta Pixel, etc.");
+              console.log("Consent accepted");
               // TODO: Initialize tracking scripts here
             } else {
                 Journey('setConsentSettings', { accepted: false })
