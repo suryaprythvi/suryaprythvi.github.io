@@ -1,91 +1,42 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta property="og:image" content="https://imagecdn.mightycause.com/147d9c49-eb89-44f7-9630-d3c87761ed2b/">
-    <link rel="shortcut icon" href="favicon.png">
-    <title>My new app</title>
-    <style>
-        .container img {
-            width: auto;
-            max-width: 100%;
-        }
-         #consent-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #333;
-            color: #fff;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
-            z-index: 9999;
-            display: none; /* Hidden by default, toggled by JS */
-          }
-          .consent-btn {
-            margin: 0 10px;
-            padding: 8px 16px;
-            cursor: pointer;
-          }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ApexFlow — Streamline Your Team's Workflow</title>
     <script type="module">
-        try {
-            const { embeds } = await import(
-              'https://unisphere.nvp1.ovp.kaltura.com/v1/loader/index.esm.js'
-            );
+            try {
+                const { embeds } = await import(
+                  'https://unisphere.nvp1.ovp.kaltura.com/v1/loader/index.esm.js'
+                );
+                
+                const { destroy, apis } = await embeds.workspace({
+                  env: 'qa',
+                  apis: ['genieChat'],
+                  session: { widgetId: '0_583p0jbl', partnerId: 174372 }
+                });
+                
+                const { remove } = apis.genieChat.floater();
+                
+                const { journey } = await import('http://localhost:5173/dist/journey-agent.js');
+                journey.init('LB-518402A9-1');
+                
+                journey('on', 'ready', function(config) {
+                  console.log('[Journey] Ready:', config);
+                });
             
-            const { destroy, apis } = await embeds.workspace({
-              env: 'qa',
-              apis: ['genieChat'],
-              session: { widgetId: '0_583p0jbl', partnerId: 174372 }
-            });
+                journey('on', 'identity', function(identity) {
+                  console.log('[Journey] Visitor ID:', identity.visitorId);
+                });
             
-            const { remove } = apis.genieChat.floater();
-            
-            const { journey } = await import('http://localhost:5173/dist/journey-agent.js');
-            journey.init('LB-518402A9-1');
-            
-            journey('on', 'ready', function(config) {
-              console.log('[Journey] Ready:', config);
-            });
-        
-            journey('on', 'identity', function(identity) {
-              console.log('[Journey] Visitor ID:', identity.visitorId);
-            });
-        
-            journey("on", "consent", function(consent) {
-              console.log("[Journey] Consent:", consent);
-            });
-        } catch (error) {
-            console.error('Failed to create embeds:', error);
-        }
-    </script>
-    <script>
-      
-    </script>
-    <!-- <script src="http://localhost:5173/dist/journey-agent.js"></script> -->
-    <script>
+                journey("on", "consent", function(consent) {
+                  console.log("[Journey] Consent:", consent);
+                });
+            } catch (error) {
+                console.error('Failed to create embeds:', error);
+            }
+
         document.addEventListener("DOMContentLoaded", function () {
-        // window.Journey("on", "ready", function(config) {
-        //   console.log("[Journey] Ready:", config);
-        // });
-    
-        // window.Journey("on", "identity", function(id) {
-        //   console.log("[Journey] Identity:", id);
-        // });
-    
-        // window.Journey("on", "consent", function(consent) {
-        //   console.log("[Journey] Consent:", consent);
-        // });
-    
-        // window.Journey("init", { clientId: "LB-518402A9-1" });
-            
           const consentBanner = document.getElementById("consent-banner");
           const btnYes = document.getElementById("consent-yes");
           const btnNo = document.getElementById("consent-no");
@@ -143,27 +94,395 @@
             handleThirdPartyScripts(false);
           });
         });
-    </script>
+        </script>
+  <style>
+    /* --- Reset & Base Styles --- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: #1f2937;
+      background-color: #ffffff;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    #consent-banner {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        color: #fff;
+        padding: 15px;
+        text-align: center;
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+        z-index: 9999;
+        display: none; /* Hidden by default, toggled by JS */
+   }
+   .consent-btn {
+        margin: 0 10px;
+        padding: 8px 16px;
+        cursor: pointer;
+   }
+      
+    /* --- Buttons --- */
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-primary {
+      background-color: #2563eb;
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background-color: #1d4ed8;
+    }
+
+    .btn-secondary {
+      background-color: #f3f4f6;
+      color: #1f2937;
+      border: 1px solid #d1d5db;
+    }
+
+    .btn-secondary:hover {
+      background-color: #e5e7eb;
+    }
+
+    /* --- Navigation Bar --- */
+    header {
+      border-bottom: 1px solid #e5e7eb;
+      padding: 18px 0;
+      position: sticky;
+      top: 0;
+      background: #ffffff;
+      z-index: 100;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #2563eb;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    nav a:hover {
+      color: #2563eb;
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+      text-align: center;
+      padding: 80px 0;
+      background: linear-gradient(180deg, #eff6ff 0%, #ffffff 100%);
+    }
+
+    .hero h1 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: #111827;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: #4b5563;
+      max-width: 650px;
+      margin: 0 auto 32px auto;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* --- Features Section --- */
+    .section {
+      padding: 70px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      color: #111827;
+    }
+
+    .section-header p {
+      color: #6b7280;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    .card {
+      padding: 28px;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      background: #ffffff;
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      font-size: 1.25rem;
+      color: #111827;
+    }
+
+    .card p {
+      color: #4b5563;
+      font-size: 0.95rem;
+    }
+
+    /* --- How It Works --- */
+    .bg-light {
+      background-color: #f9fafb;
+    }
+
+    .step-number {
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      line-height: 36px;
+      text-align: center;
+      background-color: #2563eb;
+      color: #ffffff;
+      border-radius: 50%;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    /* --- Testimonial --- */
+    .testimonial {
+      text-align: center;
+      max-width: 750px;
+      margin: 0 auto;
+    }
+
+    .testimonial blockquote {
+      font-size: 1.4rem;
+      font-style: italic;
+      color: #1f2937;
+      margin-bottom: 16px;
+    }
+
+    .testimonial cite {
+      font-style: normal;
+      font-weight: 600;
+      color: #4b5563;
+    }
+
+    /* --- CTA Banner --- */
+    .cta-banner {
+      background-color: #2563eb;
+      color: #ffffff;
+      text-align: center;
+      padding: 64px 20px;
+      border-radius: 12px;
+      margin: 40px auto;
+    }
+
+    .cta-banner h2 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .cta-banner p {
+      margin-bottom: 24px;
+      opacity: 0.9;
+    }
+
+    .cta-banner .btn {
+      background-color: #ffffff;
+      color: #2563eb;
+    }
+
+    .cta-banner .btn:hover {
+      background-color: #f3f4f6;
+    }
+
+    /* --- Footer --- */
+    footer {
+      border-top: 1px solid #e5e7eb;
+      padding: 40px 0;
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    /* --- Mobile Adjustments --- */
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      nav ul {
+        gap: 14px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
 </head>
+<body>
 
-<body style="background-color: darkcyan;">
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <!-- Latest compiled and minified JavaScript -->
-<!--     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
-    <div>
-        <a href="#" data-lookbook-overlay-href="http://buzzdata.buzzdata.local:4000/l/how-sam-stacks-up" data-lookbook-overlay-width="80%" data-lookbook-overlay-height="80%">OVERLAY EXAMPLE LINK</a>
-        <div class="container" id="new_wibsite_tools"></div>
-        <div class="container" id="new_wibsite_tools2"></div>
-        <p>
-          Canada is a country in the northern part of North America. Its ten provinces and three territories extend from the Atlantic to the Pacific and northward into the Arctic Ocean, covering 9.98 million square kilometres (3.85 million square miles), making it the world's second-largest country by total area. Its southern border with the United States, stretching some 8,891 kilometres (5,525 mi), is the world's longest bi-national land border. Canada's capital is Ottawa, and its three largest metropolitan areas are Toronto, Montreal, and Vancouver.
-
-          As a whole,age of the Canada Act, bringing the Constitution of Canada fully under Canadian control, referred only to Canada, and later that year the name of the national holiday was changed from Dominion Day to Canada Day.[19] The term Dominion was used to distinguish the federal government from the provinces, though after the Second World War the term federal had replaced dominion.[20]
-        </p>
-        <div class="container" id="new_wibsite_tools1"></div>
+  <!-- Navigation -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="#" class="logo">ApexFlow</a>
+      <nav>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#cta" class="btn btn-primary" style="padding: 8px 16px;">Get Started</a></li>
+        </ul>
+      </nav>
     </div>
-    <form>
-       <input type="text" name="email" />
-    </form>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Streamline Your Team’s Workflow Without Endless Meetings</h1>
+      <p>We help growing teams save 10+ hours every week through automated task tracking and clear project dashboards.</p>
+      <div class="hero-buttons">
+        <a href="#cta" class="btn btn-primary">Start Your Free Trial</a>
+        <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Everything You Need to Stay Organized</h2>
+        <p>Stop juggling disconnected spreadsheets and chat threads. Bring your core work into one simple space.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Automated Workflows</h3>
+          <p>Eliminate repetitive admin tasks in minutes. Set simple triggers so updates happen automatically.</p>
+        </div>
+        <div class="card">
+          <h3>Real-Time Reports</h3>
+          <p>Track project progress with clean visual charts. Spot bottlenecks early and make data-backed decisions.</p>
+        </div>
+        <div class="card">
+          <h3>Team Collaboration</h3>
+          <p>Keep everyone aligned with shared workspaces and built-in comments, whether in the office or remote.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works" class="section bg-light">
+    <div class="container">
+      <div class="section-header">
+        <h2>Up and Running in Three Simple Steps</h2>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <span class="step-number">1</span>
+          <h3>Create Your Account</h3>
+          <p>Sign up in under 60 seconds with no credit card required.</p>
+        </div>
+        <div class="card">
+          <span class="step-number">2</span>
+          <h3>Customize Your Space</h3>
+          <p>Import existing lists or choose from our ready-made industry templates.</p>
+        </div>
+        <div class="card">
+          <span class="step-number">3</span>
+          <h3>Launch and Grow</h3>
+          <p>Invite your team and start seeing measurable time savings on day one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial & About -->
+  <section id="about" class="section">
+    <div class="container testimonial">
+      <blockquote>“Switching to ApexFlow cut our weekly admin work in half. It is intuitive, fast, and our team actually enjoys using it.”</blockquote>
+      <cite>— Priya Sharma, Operations Lead at Northstar Studio</cite>
+    </div>
+  </section>
+
+  <!-- Call to Action Banner -->
+  <div class="container" id="cta">
+    <div class="cta-banner">
+      <h2>Ready to Simplify Your Daily Work?</h2>
+      <p>Start your 14-day free trial today. Cancel anytime with one click.</p>
+      <a href="#" class="btn">Get Started Now</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-content">
+      <div>© 2026 ApexFlow Inc. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="mailto:hello@apexflow.example">hello@apexflow.example</a>
+      </div>
+    </div>
+  </footer>
+
     <div id="consent-banner">
       <span>We use cookies to improve your experience. Do you consent to our use of cookies?</span>
       <button id="consent-yes" class="consent-btn">Yes, I accept</button>
