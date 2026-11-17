@@ -4,39 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ApexFlow — Streamline Your Team's Workflow</title>
-    <script type="module">
-            try {
-                const { embeds } = await import(
-                  'https://unisphere.nvp1.ovp.kaltura.com/v1/loader/index.esm.js'
-                );
-                
-                const { destroy, apis } = await embeds.workspace({
-                  env: 'qa',
-                  apis: ['genieChat'],
-                  session: { widgetId: '0_583p0jbl', partnerId: 174372 }
-                });
-                
-                const { remove } = apis.genieChat.floater();
-                
-                await import('http://localhost:5173/dist/journey-agent.js');
-                Journey.init('LB-518402A9-1');
-                
-                Journey('on', 'ready', function(config) {
-                  console.log('[Journey] Ready:', config);
-                });
-            
-                Journey('on', 'identity', function(identity) {
-                  console.log('[Journey] Visitor ID:', identity.visitorId);
-                });
-            
-                Journey("on", "consent", function(consent) {
-                  console.log("[Journey] Consent:", consent);
-                });
-            } catch (error) {
-                console.error('Failed to create embeds:', error);
-            }
-
-        document.addEventListener("DOMContentLoaded", function () {
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
           const consentBanner = document.getElementById("consent-banner");
           const btnYes = document.getElementById("consent-yes");
           const btnNo = document.getElementById("consent-no");
@@ -94,6 +63,38 @@
             handleThirdPartyScripts(false);
           });
         });
+    </script>
+    <script type="module">
+            try {
+                const { embeds } = await import(
+                  'https://unisphere.nvp1.ovp.kaltura.com/v1/loader/index.esm.js'
+                );
+                
+                const { destroy, apis } = await embeds.workspace({
+                  env: 'qa',
+                  apis: ['genieChat'],
+                  session: { widgetId: '0_583p0jbl', partnerId: 174372 }
+                });
+                
+                const { remove } = apis.genieChat.floater();
+                
+                await import('http://localhost:5173/dist/journey-agent.js');
+                Journey.init('LB-518402A9-1');
+                
+                Journey('on', 'ready', function(config) {
+                  console.log('[Journey] Ready:', config);
+                });
+            
+                Journey('on', 'identity', function(identity) {
+                  console.log('[Journey] Visitor ID:', identity.visitorId);
+                });
+            
+                Journey("on", "consent", function(consent) {
+                  console.log("[Journey] Consent:", consent);
+                });
+            } catch (error) {
+                console.error('Failed to create embeds:', error);
+            }
         </script>
 </head>
 <body>
