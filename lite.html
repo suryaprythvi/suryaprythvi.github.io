@@ -47,41 +47,21 @@
             });
             
             const { remove } = apis.genieChat.floater();
-
-            (function(j, o, u, r, n, e, y) {
-                j[n] = j[n] || function() {
-                  (j[n].q = j[n].q || []).push(arguments);
-                };
-                j[n].l = 1 * new Date();
-                e = o.createElement(u);
-                y = o.getElementsByTagName(u)[0];
-                e.async = 1;
-                e.src = r;
-                y.parentNode.insertBefore(e, y);
-              })(
-                window,
-                document,
-                'script',
-                'http://localhost:5173/dist/journey-agent.js',
-                'Journey'
-              );
             
-              // 1. Listen for events (optional)
-              Journey('on', 'ready', function(config) {
-                console.log('[Journey] Ready:', config);
-              });
+            const { journey } = await import('http://localhost:5173/dist/journey-agent.js');
+            journey.init('LB-518402A9-1');
             
-              Journey('on', 'identity', function(identity) {
-                console.log('[Journey] Visitor ID:', identity.visitorId);
-              });
+            journey('on', 'ready', function(config) {
+              console.log('[Journey] Ready:', config);
+            });
         
-                window.Journey("on", "consent", function(consent) {
-                  console.log("[Journey] Consent:", consent);
-                });
-            
-              // 2. Initialize tracking
-              Journey('init', { clientId: 'LB-518402A9-1' });
-                    
+            journey('on', 'identity', function(identity) {
+              console.log('[Journey] Visitor ID:', identity.visitorId);
+            });
+        
+            journey("on", "consent", function(consent) {
+              console.log("[Journey] Consent:", consent);
+            });
         } catch (error) {
             console.error('Failed to create embeds:', error);
         }
